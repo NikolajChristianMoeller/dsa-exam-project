@@ -1,53 +1,118 @@
-#container {
+h1 {
+  font-family: 'Georgia', serif; /* Change the font family for headings */
+  color: black;
+  text-align: center;
+  margin-top: 10px; /* Reduce margin */
+  font-size: 18px; /* Reduce font size */
+}
+
+nav {
+  font-family: 'Georgia', serif; /* Change the font family for headings */
   display: flex;
-  height: 500px;
+  color: black;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start (left) */
+  gap: 5px; /* Reduce space between the elements */
+  border: none; /* Remove all borders */
+  padding: 5px; /* Reduce padding inside the nav */
+  font-size: 14px; /* Reduce font size */
+}
+
+body {
+  font-family: 'Georgia', serif; /* Change the font family for headings */
+  color: black;
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the body takes the full height of the viewport */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  background-image: url('beach.jpg'); /* Set the background image */
+  background-size: cover; /* Ensure the background image covers the entire viewport */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
+}
+
+/* footer {
+  color: black;
+  font-family: 'Georgia', serif;
+  padding: 2px;
+  width: 100%;
+  font-size: 10px;
+  margin-top: auto;
+} */
+
+#main-container {
+  display: flex;
+  height: 300px; /* Reduce height */
   flex-direction: row;
   justify-content: space-around;
-  background-color: aqua;
+  position: relative;
+  flex: 1; /* Allow the main container to grow and fill the available space */
+  width: 100%; /* Ensure the main container does not exceed the viewport width */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+#left-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%; /* Ensure the left container takes 50% of the width */
+  margin-top: 10px; /* Reduce margin */
+  margin-bottom: 10px; /* Reduce margin */
+}
+
+#weight,
+#item {
+  width: 80px; /* Reduce width */
+  font-size: 12px; /* Reduce font size */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 columns */
+  grid-template-rows: repeat(5, 1fr); /* 5 rows */
+  gap: 0; /* Remove gap between cells */
 }
 
 .cell {
   display: flex;
   border: 1px solid black;
-  height: 20px;
-  width: 20px;
-  padding: 10px;
-  margin: 5px;
+  height: 15px; /* Reduce height */
+  width: 15px; /* Reduce width */
   justify-content: center;
+  align-items: center; /* Center content vertically */
+  font-size: 10px; /* Reduce font size */
 }
 
 .vertical-line {
-  position: fixed;
-  top: 50%;
+  position: absolute;
+  top: 3.3%;
   left: 50%;
-  width: 2px;
-  height: 50%;
+  width: 1px;
+  height: calc(100% + 37.5%); /* Extend the height to cover the footer */
   background-color: black;
   transform: translateX(-50%);
 }
 
-#weight,
-#item {
-  width: 100px;
+.chest-image {
+  width: auto; /* Adjust width to auto */
+  height: 80%; /* Adjust height as needed */
+  object-fit: contain; /* Ensure the image fits within the container without being cut off */
+  opacity: 0.5; /* Make the image semi-transparent */
+  margin-top: 70%; /* Move the image down */
 }
 
-#left-side {
-  display: grid;
-  background-color: brown;
-  border: 1px solid black;
-  grid-template-columns: auto auto auto;
-  padding: 10px;
+#right-container {
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-right: 0;
-  
-}
-
-#right-side {
-  display: flex;
-  background-color: chocolate;
-  align-items: center;
-  justify-content: center;
-  margin-left: 20px;
+  width: 50%; /* Ensure the right container takes 50% of the width */
+  border-bottom: none; /* Remove the lower border */
+  background-color: transparent; /* Remove background color */
+  margin-top: 10px; /* Reduce margin */
+  margin-bottom: 20px; /* Reduce margin */
+  position: relative; /* Ensure the container is positioned correctly */
 }
