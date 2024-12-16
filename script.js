@@ -6,5 +6,3 @@ function init() {
   console.log("Programmet kører");
 }
 
-
-

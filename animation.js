@@ -1,37 +1,27 @@
 window.addEventListener("load", init);
 
-//#region Model
+// #region Model
 
-function generateArray() {
+function generateArray() {}
 
-}
+// #endregion
 
+// #region View
 
-//#region View
+function showArray() {}
 
-function showArray() {
+function renderArray() {}
 
-}
+function launchGenerateArray() {}
 
-function renderArray() {
+// #endregion
 
-}
+// #region Controller
 
-function launchGenerateArray() {
+function init() {}
 
-}
+function startSort() {}
 
-//#region Controller
+function reset() {}
 
-function init() {
-  
-}
-
-function startSort() {
-  
-}
-
-function reset() {
-
-}
-
+// #endregion
