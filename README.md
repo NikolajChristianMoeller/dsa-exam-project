@@ -9,8 +9,8 @@ Knapsack-problemet er et klassisk optimeringsproblem, hvor man forsøger at find
 
 I denne visualisering kan brugeren se, hvordan Dynamic Programming-algoritmen arbejder trin for trin for at beregne den optimale løsning.
 
-## Deployede Udgave
-https://github.com/NikolajChristianMoeller/dsa-exam-project/edit/main/README.md
+## Deployet udgave
+https://nikolajchristianmoeller.github.io/dsa-exam-project/
 
 ## Valg af algoritme og datastruktur
 Vi har valgt at implementere Dynamic Programming-tilgangen, som er effektiv til at løse Knapsack-problemet i forhold til brute force.
