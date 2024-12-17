@@ -50,7 +50,10 @@ button {
 
 /********************************************** ID'ER **********************************************/
 
-
+main {
+  display: flex;
+  gap: 1em;
+}
 
 
 #main-container {
@@ -67,21 +70,21 @@ button {
 
 #left-container {
   display: flex;
-  flex-direction: row;
-  align-items: stretch;
+  flex-direction: row; /* Keep both sections side by side */
   justify-content: space-between;
   width: 50%;
   margin-top: 20px;
   margin-bottom: 10px;
   padding: 10px;
   box-sizing: border-box;
+  gap: 10px; /* Add a little space between the info box and grid */
 }
 
 #right-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;  /* Align content to the left */
+  justify-content: flex-start;  /* Start from the top */
   width: 50%;
   border-bottom: none;
   background-color: transparent;
@@ -90,40 +93,26 @@ button {
   position: relative;
 }
 
-#weight,
-#item {
-  width: 80px;
-  font-size: 12px;
-}
-
-#gridfield {
+#info {
+  flex: 1; /* Equal size for the info box */
+  color: #6e6;
   border: 1px solid black;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr); /* 7 equal columns */
-  grid-template-rows: repeat(5, auto);   /* Adjust row height based on content */
-  gap: 0;                                /* No gaps between cells */
+  background-color: #5b5b5b;
+  padding: 1em;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
   box-sizing: border-box;
 }
 
-#info {
-  border: 1px solid black;
-  flex-grow: 1;
-  padding: 1em;
-  font-family: "Courier New", Courier, monospace;
-  margin-right: 3%;
-  margin-bottom: 13%;
-  font-size: 12px;
-}
-
 #chest-info {
+  background-color: #5b5b5b;
   border: 1px solid black;
-  flex-grow: 1;
   padding: 1em;
+  color: #6e6;
   font-family: "Courier New", Courier, monospace;
-  margin-right: 15%;
-  margin-bottom: 13%;
   font-size: 12px;
+  margin-bottom: 20px; /* Gives some space between the chest info and the image */
+  margin-right: 4%;
 }
 
 #reset-button {
@@ -133,22 +122,29 @@ button {
   text-align: right;
 }
 
+#weight,
+#item {
+  width: 80px;
+  font-size: 12px;
+}
+
 
 
 
 /********************************************** KLASSER **********************************************/
 
 
-
-
 .grid {
+  flex: 1; /* Equal size for the grid */
   display: grid;
+  color: #6e6;
   grid-template-columns: repeat(7, 1fr); /* 7 equal columns */
-  grid-template-rows: repeat(5, auto);   /* 5 rows with flexible height */
-  gap: 0;
-  width: 100%;                          /* Ensure grid fills its container */
-  aspect-ratio: 7 / 5;                  /* Maintain a proportional grid */
+  grid-template-rows: repeat(5, 1fr);   /* 5 equal rows */
+  gap: 1px; /* Adjust spacing between cells */
+  background-color: #5b5b5b;
   box-sizing: border-box;
+  aspect-ratio: 7 / 5; /* Maintain grid proportions */
+  max-height: 200px; /* Set a maximum height for the grid */
 }
 
 .cell {
@@ -163,23 +159,33 @@ button {
 }
 
 .chest-image {
-  width: auto;
-  height: 80%;
+  width: 100%;
+  height: auto;
+  max-height: 300px;
   object-fit: contain;
   opacity: 0.5;
-  margin-top: 70%;
 }
+
+/* .chest-image {
+  width: 100%;         
+  height: auto;              
+  max-height: 300px;        
+  object-fit: contain;
+  opacity: 0,5;               
+} */
+
 
 @media (max-width: 768px) {
-  #gridfield {
+  .grid {
     grid-template-columns: repeat(4, 1fr); /* 4 columns on small screens */
+    gap: 1px;                             /* Further reduce the gap between cells */
   }
 
-  .grid {
-    grid-template-columns: repeat(4, 1fr); /* Same for the grid */
+  .cell {
+    padding: 2px;                         /* Further reduce cell padding */
+    font-size: 8px;                        /* Reduce font size for smaller screens */
   }
 }
-
 
 
 
