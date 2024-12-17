@@ -2,6 +2,12 @@
 
 
 
+main {
+  display: flex;
+  gap: 1em;
+  align-items: stretch; /* Ensure everything aligns evenly */
+  justify-content: space-between;
+}
 
 body {
   font-family: "Courier New", Courier, monospace;
@@ -26,6 +32,16 @@ h1 {
   font-size: 18px;
 }
 
+select[type="number"] {
+  background-color: #5b5b5b;
+  color: #6e6;
+  font-family: "Courier New", Courier, monospace;
+  text-align: right;
+  width: 4em;
+}
+
+
+
 /* nav {
   font-family: "Courier New", Courier, monospace;
   display: flex;
@@ -38,35 +54,14 @@ h1 {
   font-size: 14px;
 } */
 
-button {
-  background-color: #5b5b5b;
-  color: #6e6;
-  font-family: "Courier New", Courier, monospace;
-  text-align: right;
-}
-
 
 
 
 /********************************************** ID'ER **********************************************/
 
-main {
-  display: flex;
-  gap: 1em;
-}
 
 
-#main-container {
-  display: flex;
-  margin-top: 20px;
-  height: 300px;
-  flex-direction: row;
-  justify-content: space-around;
-  position: relative;
-  flex: 1;
-  width: 100%;
-  box-sizing: border-box;
-}
+
 
 #left-container {
   display: flex;
@@ -115,18 +110,23 @@ main {
   margin-right: 4%;
 }
 
+#solve-button {
+  background-color: #5b5b5b;
+  color: #6e6;
+  font-family: inherit;
+  text-align: right;
+  font-size: 12px;
+}
+
 #reset-button {
   background-color: #d11212;
   color: #6e6;
   font-family: inherit;
   text-align: right;
-}
-
-#weight,
-#item {
-  width: 80px;
   font-size: 12px;
 }
+
+
 
 
 
@@ -166,13 +166,7 @@ main {
   opacity: 0.5;
 }
 
-/* .chest-image {
-  width: 100%;         
-  height: auto;              
-  max-height: 300px;        
-  object-fit: contain;
-  opacity: 0,5;               
-} */
+
 
 
 @media (max-width: 768px) {
@@ -189,23 +183,3 @@ main {
 
 
 
-
-/**************************************** ATTRIBUTE SELECTORS ****************************************/
-
-
-
-
-select[type="number"] {
-  background-color: #5b5b5b;
-  color: #6e6;
-  font-family: "Courier New", Courier, monospace;
-  text-align: right;
-  width: 4em;
-}
-
-#info h2,
-#info label,
-#info input,
-#info button {
-  font-size: 12px;
-}
