@@ -45,15 +45,6 @@ button {
   text-align: right;
 }
 
-/* footer {
-  color: black;
-  font-family: "Courier New", Courier, monospace;
-  padding: 2px;
-  width: 100%;
-  font-size: 10px;
-  margin-top: auto;
-} */
-
 
 
 
@@ -107,11 +98,11 @@ button {
 
 #gridfield {
   border: 1px solid black;
-  width: 50%;
-  height: auto;
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(8, 1fr); /* 8 columns: 1 label + 7 capacities */
-  grid-template-rows: repeat(7, 1fr);   /* 7 rows: 1 label + 6 items */
+  grid-template-columns: repeat(7, 1fr); /* 7 equal columns */
+  grid-template-rows: repeat(5, auto);   /* Adjust row height based on content */
+  gap: 0;                                /* No gaps between cells */
   box-sizing: border-box;
 }
 
@@ -120,7 +111,7 @@ button {
   flex-grow: 1;
   padding: 1em;
   font-family: "Courier New", Courier, monospace;
-  margin-right: 15%;
+  margin-right: 3%;
   margin-bottom: 13%;
   font-size: 12px;
 }
@@ -153,38 +144,23 @@ button {
 .grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr); /* 7 equal columns */
-  grid-template-rows: repeat(5, 1fr);   /* 5 equal rows */
-  gap: 0;                               /* No gaps between cells */
-  width: 100%;                          /* Make sure it scales to its parent */
+  grid-template-rows: repeat(5, auto);   /* 5 rows with flexible height */
+  gap: 0;
+  width: 100%;                          /* Ensure grid fills its container */
   aspect-ratio: 7 / 5;                  /* Maintain a proportional grid */
-  box-sizing: border-box;               /* Include borders in sizing */
+  box-sizing: border-box;
 }
 
 .cell {
   display: flex;
-  border: 1px solid black;              /* Grid cell borders */
   justify-content: center;
-  font-family: 'Courier New', Courier, monospace;
   align-items: center;
+  border: 1px solid black;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 12px;
   box-sizing: border-box;
+  padding: 5px;
 }
-
-/* Highlight the header row (capacity) */
-.cell.header {
-  color: orange;
-  font-weight: bold;
-}
-
-/* Highlight the first column (items) */
-.cell.label {
-  color: orange;
-  font-weight: bold;
-  text-align: center;
-  white-space: nowrap; /* Prevent text wrapping */
-}
-
-
 
 .chest-image {
   width: auto;
@@ -194,15 +170,16 @@ button {
   margin-top: 70%;
 }
 
-/* .vertical-line {
-  position: absolute;
-  top: 3.3%;
-  left: 50%;
-  width: 1px;
-  height: calc(100% + 37.5%);
-  background-color: black;
-  transform: translateX(-50%);
-} */
+@media (max-width: 768px) {
+  #gridfield {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on small screens */
+  }
+
+  .grid {
+    grid-template-columns: repeat(4, 1fr); /* Same for the grid */
+  }
+}
+
 
 
 
