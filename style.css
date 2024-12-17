@@ -96,6 +96,7 @@ select[type="number"] {
 
 
 .grid-header {
+  display: grid;
   font-family: "Courier New", Courier, monospace;
   font-size: 18px;  /* Adjust as needed */
   color: #6e6;  /* Same as your other headers */
