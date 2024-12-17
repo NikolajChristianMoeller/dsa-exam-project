@@ -1,7 +1,5 @@
 /********************************************** TYPER **********************************************/
 
-
-
 main {
   display: flex;
   gap: 1em;
@@ -26,48 +24,39 @@ body {
 
 h1 {
   font-family: "Courier New", Courier, monospace;
+  font-size: 18px;
   color: black;
   text-align: center;
   margin-top: 10px;
-  font-size: 18px;
 }
 
 select[type="number"] {
-  background-color: #5b5b5b;
-  color: #6e6;
   font-family: "Courier New", Courier, monospace;
+  color: #6e6;
+  background-color: #5b5b5b;
   text-align: right;
   width: 4em;
 }
 
-
-
 /* nav {
   font-family: "Courier New", Courier, monospace;
-  display: flex;
+  font-size: 14px;
   color: black;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 5px;
   border: 1px solid black;
   padding: 5px;
-  font-size: 14px;
 } */
-
-
-
 
 /********************************************** ID'ER **********************************************/
 
-
-
-
-
 #left-container {
+  width: 50%;
   display: flex;
   flex-direction: row; /* Keep both sections side by side */
   justify-content: space-between;
-  width: 50%;
   margin-top: 20px;
   margin-bottom: 10px;
   padding: 10px;
@@ -76,86 +65,81 @@ select[type="number"] {
 }
 
 #right-container {
+  width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;  /* Align content to the left */
-  justify-content: flex-start;  /* Start from the top */
-  width: 50%;
-  border-bottom: none;
-  background-color: transparent;
+  align-items: flex-start; /* Align content to the left */
+  justify-content: flex-start; /* Start from the top */
+  padding: 10px;
   margin-top: 10px;
   margin-bottom: 20px;
   position: relative;
+  background-color: transparent;
+  border-bottom: none;
 }
 
 #info {
-  flex: 1; /* Equal size for the info box */
-  color: #6e6;
-  border: 1px solid black;
-  background-color: #5b5b5b;
-  padding: 1em;
   font-family: "Courier New", Courier, monospace;
   font-size: 12px;
+  color: #6e6;
+  flex: 1; /* Equal size for the info box */
+  background-color: #5b5b5b;
+  border: 1px solid black;
+  padding: 1em;
   box-sizing: border-box;
 }
 
 #chest-info {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  color: #6e6;
   background-color: #5b5b5b;
   border: 1px solid black;
   padding: 1em;
-  color: #6e6;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 12px;
   margin-bottom: 20px; /* Gives some space between the chest info and the image */
   margin-right: 4%;
 }
 
 #solve-button {
-  background-color: #5b5b5b;
-  color: #6e6;
   font-family: inherit;
-  text-align: right;
   font-size: 12px;
+  color: #6e6;
+  background-color: #5b5b5b;
+  text-align: right;
 }
 
 #reset-button {
-  background-color: #d11212;
-  color: #6e6;
   font-family: inherit;
-  text-align: right;
   font-size: 12px;
+  color: #6e6;
+  background-color: #d11212;
+  text-align: right;
 }
-
-
-
-
-
 
 /********************************************** KLASSER **********************************************/
 
-
 .grid {
   flex: 1; /* Equal size for the grid */
-  display: grid;
   color: #6e6;
+  display: grid;
   grid-template-columns: repeat(7, 1fr); /* 7 equal columns */
-  grid-template-rows: repeat(5, 1fr);   /* 5 equal rows */
+  grid-template-rows: repeat(5, 1fr); /* 5 equal rows */
   gap: 1px; /* Adjust spacing between cells */
   background-color: #5b5b5b;
-  box-sizing: border-box;
   aspect-ratio: 7 / 5; /* Maintain grid proportions */
   max-height: 200px; /* Set a maximum height for the grid */
+  box-sizing: border-box;
 }
 
 .cell {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid black;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 12px;
-  box-sizing: border-box;
   padding: 5px;
+  box-sizing: border-box;
 }
 
 .chest-image {
@@ -166,20 +150,14 @@ select[type="number"] {
   opacity: 0.5;
 }
 
-
-
-
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: repeat(4, 1fr); /* 4 columns on small screens */
-    gap: 1px;                             /* Further reduce the gap between cells */
+    gap: 1px; /* Further reduce the gap between cells */
   }
 
   .cell {
-    padding: 2px;                         /* Further reduce cell padding */
-    font-size: 8px;                        /* Reduce font size for smaller screens */
+    font-size: 8px; /* Reduce font size for smaller screens */
+    padding: 2px; /* Further reduce cell padding */
   }
 }
-
-
-
