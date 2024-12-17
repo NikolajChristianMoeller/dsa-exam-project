@@ -82,7 +82,6 @@ select[type="number"] {
   text-align: right;
 }
 
-
 #reset-button {
   font-family: inherit;
   font-size: 12px;
@@ -90,6 +89,8 @@ select[type="number"] {
   background-color: #d11212;
   text-align: right;
 }
+
+
 
 /********************************************** KLASSER **********************************************/
 
