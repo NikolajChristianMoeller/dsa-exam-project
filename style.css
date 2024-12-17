@@ -1,107 +1,89 @@
-h1 {
-  font-family: 'Georgia', serif; /* Change the font family for headings */
-  color: black;
-  text-align: center;
-  margin-top: 10px; /* Reduce margin */
-  font-size: 18px; /* Reduce font size */
-}
+/********************************************** TYPER **********************************************/
 
-nav {
-  font-family: 'Georgia', serif; /* Change the font family for headings */
-  display: flex;
-  color: black;
-  flex-direction: column;
-  align-items: flex-start; /* Align items to the start (left) */
-  gap: 5px; /* Reduce space between the elements */
-  border: none; /* Remove all borders */
-  padding: 5px; /* Reduce padding inside the nav */
-  font-size: 14px; /* Reduce font size */
-}
+
+
 
 body {
-  font-family: 'Georgia', serif; /* Change the font family for headings */
+  font-family: "Courier New", Courier, monospace;
   color: black;
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensure the body takes the full height of the viewport */
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  background-image: url('beach.jpg'); /* Set the background image */
-  background-size: cover; /* Ensure the background image covers the entire viewport */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Prevent the background image from repeating */
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: url('public/beach.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  font-family: "Courier New", Courier, monospace;
+  color: black;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+/* nav {
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  color: black;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  border: 1px solid black;
+  padding: 5px;
+  font-size: 14px;
+} */
+
+button {
+  background-color: #5b5b5b;
+  color: #6e6;
+  font-family: "Courier New", Courier, monospace;
+  text-align: right;
 }
 
 /* footer {
   color: black;
-  font-family: 'Georgia', serif;
+  font-family: "Courier New", Courier, monospace;
   padding: 2px;
   width: 100%;
   font-size: 10px;
   margin-top: auto;
 } */
 
+
+
+
+/********************************************** ID'ER **********************************************/
+
+
+
+
 #main-container {
   display: flex;
-  height: 300px; /* Reduce height */
+  margin-top: 20px;
+  height: 300px;
   flex-direction: row;
   justify-content: space-around;
   position: relative;
-  flex: 1; /* Allow the main container to grow and fill the available space */
-  width: 100%; /* Ensure the main container does not exceed the viewport width */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #left-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50%; /* Ensure the left container takes 50% of the width */
-  margin-top: 10px; /* Reduce margin */
-  margin-bottom: 10px; /* Reduce margin */
-}
-
-#weight,
-#item {
-  width: 80px; /* Reduce width */
-  font-size: 12px; /* Reduce font size */
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr); /* 7 columns */
-  grid-template-rows: repeat(5, 1fr); /* 5 rows */
-  gap: 0; /* Remove gap between cells */
-}
-
-.cell {
-  display: flex;
-  border: 1px solid black;
-  height: 15px; /* Reduce height */
-  width: 15px; /* Reduce width */
-  justify-content: center;
-  align-items: center; /* Center content vertically */
-  font-size: 10px; /* Reduce font size */
-}
-
-.vertical-line {
-  position: absolute;
-  top: 3.3%;
-  left: 50%;
-  width: 1px;
-  height: calc(100% + 37.5%); /* Extend the height to cover the footer */
-  background-color: black;
-  transform: translateX(-50%);
-}
-
-.chest-image {
-  width: auto; /* Adjust width to auto */
-  height: 80%; /* Adjust height as needed */
-  object-fit: contain; /* Ensure the image fits within the container without being cut off */
-  opacity: 0.5; /* Make the image semi-transparent */
-  margin-top: 70%; /* Move the image down */
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 50%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 #right-container {
@@ -109,10 +91,138 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%; /* Ensure the right container takes 50% of the width */
-  border-bottom: none; /* Remove the lower border */
-  background-color: transparent; /* Remove background color */
-  margin-top: 10px; /* Reduce margin */
-  margin-bottom: 20px; /* Reduce margin */
-  position: relative; /* Ensure the container is positioned correctly */
+  width: 50%;
+  border-bottom: none;
+  background-color: transparent;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+#weight,
+#item {
+  width: 80px;
+  font-size: 12px;
+}
+
+#gridfield {
+  border: 1px solid black;
+  width: 50%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr); /* 8 columns: 1 label + 7 capacities */
+  grid-template-rows: repeat(7, 1fr);   /* 7 rows: 1 label + 6 items */
+  box-sizing: border-box;
+}
+
+#info {
+  border: 1px solid black;
+  flex-grow: 1;
+  padding: 1em;
+  font-family: "Courier New", Courier, monospace;
+  margin-right: 15%;
+  margin-bottom: 13%;
+  font-size: 12px;
+}
+
+#chest-info {
+  border: 1px solid black;
+  flex-grow: 1;
+  padding: 1em;
+  font-family: "Courier New", Courier, monospace;
+  margin-right: 15%;
+  margin-bottom: 13%;
+  font-size: 12px;
+}
+
+#reset-button {
+  background-color: #d11212;
+  color: #6e6;
+  font-family: inherit;
+  text-align: right;
+}
+
+
+
+
+/********************************************** KLASSER **********************************************/
+
+
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 equal columns */
+  grid-template-rows: repeat(5, 1fr);   /* 5 equal rows */
+  gap: 0;                               /* No gaps between cells */
+  width: 100%;                          /* Make sure it scales to its parent */
+  aspect-ratio: 7 / 5;                  /* Maintain a proportional grid */
+  box-sizing: border-box;               /* Include borders in sizing */
+}
+
+.cell {
+  display: flex;
+  border: 1px solid black;              /* Grid cell borders */
+  justify-content: center;
+  font-family: 'Courier New', Courier, monospace;
+  align-items: center;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+/* Highlight the header row (capacity) */
+.cell.header {
+  color: orange;
+  font-weight: bold;
+}
+
+/* Highlight the first column (items) */
+.cell.label {
+  color: orange;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+
+
+.chest-image {
+  width: auto;
+  height: 80%;
+  object-fit: contain;
+  opacity: 0.5;
+  margin-top: 70%;
+}
+
+/* .vertical-line {
+  position: absolute;
+  top: 3.3%;
+  left: 50%;
+  width: 1px;
+  height: calc(100% + 37.5%);
+  background-color: black;
+  transform: translateX(-50%);
+} */
+
+
+
+
+/**************************************** ATTRIBUTE SELECTORS ****************************************/
+
+
+
+
+select[type="number"] {
+  background-color: #5b5b5b;
+  color: #6e6;
+  font-family: "Courier New", Courier, monospace;
+  text-align: right;
+  width: 4em;
+}
+
+#info h2,
+#info label,
+#info input,
+#info button {
+  font-size: 12px;
 }
