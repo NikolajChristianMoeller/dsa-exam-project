@@ -1,23 +1,45 @@
-
-let capacity = C;
-let weights = W;
+let C = 7;
+let W = [3, 1, 3, 4, 2];
+let V = [2, 2, 4, 5, 3];
 
 function knapSack() {
+  // tjekker at der er en capacity
+  if (
+    capacity < 0 ||
+    W.length != V.length ||
+    W.length == null ||
+    V.length == null
+  ) {
+    throw new Error("Invalid input: Check that weights and values");
+  }
+  // laver 2D arrayet
+  const DP = [];
+  for (let i = 0; i <= W.length; i++) {
+    const row = [];
+    DP.push(row);
+    for (let j = 0; j <= C; j++) {
+      const cell = 0;
+      row.push(cell);
+    }
+  }
+  // definer antal objekter
+  const N = W.length;
+  for (let i = 1; i <= N; i++) {
+    let w = W[i - 1];
+    let v = V[i - 1];
 
+    for (let c = 1; c <= C; c++) {
+      DP[i][c] = DP[i - 1][c];
+      if (c >= w && DP[i - 1][c - w] + v > DP[i][c]) {
+        DP[i][c] = DP[i - 1][c - w] + v;
+      }
+      //console.log("col nr " + [c]);
+    }
+    console.table(DP);
+  }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+knapSack();
 
 // // Knapsack function using Dynamic Programming
 // function knapsack(capacity, weights, values) {
