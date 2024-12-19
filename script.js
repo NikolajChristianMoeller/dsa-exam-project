@@ -1,15 +1,10 @@
-let C = 7;
-let W = [3, 1, 3, 4, 2];
-let V = [2, 2, 4, 5, 3];
+const C = 7;
+const W = [3, 1, 3, 4, 2];
+const V = [2, 2, 4, 5, 3];
 
 function knapSack() {
   // tjekker at der er en capacity
-  if (
-    capacity < 0 ||
-    W.length != V.length ||
-    W.length == null ||
-    V.length == null
-  ) {
+  if (C < 0 || W.length != V.length || W.length == null || V.length == null) {
     throw new Error("Invalid input: Check that weights and values");
   }
   // laver 2D arrayet
@@ -33,64 +28,26 @@ function knapSack() {
       if (c >= w && DP[i - 1][c - w] + v > DP[i][c]) {
         DP[i][c] = DP[i - 1][c - w] + v;
       }
-      //console.log("col nr " + [c]);
     }
-    console.table(DP);
   }
+
+  let itemsAdded = [];
+  let capacity = C;
+
+  for (let i = N; i > 0; i--) {
+    console.log("nuværende obj " + DP[i][capacity]);
+    console.log("forrige obj " + DP[i - 1][capacity]);
+
+    if (DP[i][capacity] != DP[i - 1][capacity]) {
+      console.log();
+      itemsAdded.push(V[i - 1]);
+      capacity = capacity - W[i - 1];
+    } else {
+      console.log("false");
+    }
+  }
+  console.log(itemsAdded);
+  return DP[N][C];
 }
 
-knapSack();
-
-// // Knapsack function using Dynamic Programming
-// function knapsack(capacity, weights, values) {
-//   // Check for valid inputs
-//   if (capacity < 0 || weights.length !== values.length) {
-//     throw new Error(
-//       "Invalid input: Check that weights and values arrays are of the same length and capacity is non-negative."
-//     );
-//   }
-
-//   const N = weights.length; // Number of items
-//   const DP = Array.from({ length: N + 1 }, () => Array(capacity + 1).fill(0)); // Initialize DP grid
-
-//   // Fill the DP table
-//   for (let i = 1; i <= N; i++) {
-//     const w = weights[i - 1]; // Current item's weight
-//     const v = values[i - 1]; // Current item's value
-//     for (let sz = 1; sz <= capacity; sz++) {
-//       // Case 1: Exclude the current item
-//       DP[i][sz] = DP[i - 1][sz];
-
-//       // Case 2: Include the current item, if it fits
-//       if (sz >= w) {
-//         DP[i][sz] = Math.max(DP[i][sz], v + DP[i - 1][sz - w]);
-//       }
-//     }
-//   }
-
-//   // Backtracking to find selected items
-//   let sz = capacity; // Start with full capacity
-//   const selectedItems = [];
-//   for (let i = N; i > 0; i--) {
-//     if (DP[i][sz] !== DP[i - 1][sz]) {
-//       // Item i was included
-//       selectedItems.push(i - 1); // Use 0-based indexing
-//       sz -= weights[i - 1]; // Reduce remaining capacity
-//     }
-//   }
-
-//   // Return the result: maximum value and selected items
-//   return {
-//     maxValue: DP[N][capacity],
-//     selectedItems,
-//   };
-// }
-
-// // Example usage:
-// const weights = [2, 3, 4, 5];
-// const values = [3, 4, 5, 6];
-// const capacity = 5;
-
-// const result = knapsack(capacity, weights, values);
-// console.log("Maximum Value:", result.maxValue); // Outputs: Maximum Value: 7
-// console.log("Selected Items:", result.selectedItems); // Outputs: Selected Items: [1, 0] (items 2 and 1 in 0-based index)
+console.log(knapSack());
