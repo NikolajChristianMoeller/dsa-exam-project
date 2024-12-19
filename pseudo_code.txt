@@ -1,0 +1,68 @@
+
+(INITIALISERINGEN)
+1. Argumenter for forståelse:
+   W[] = array af vægte
+   V[] = array af værdier
+   C = den maximale kapacitet tasken kan holde
+   
+
+knapsack(C, W, V) {
+
+    Tjek at W, V og C >= 0
+    Tjek at W.length == V.length	// er det fordi at vi er nød til at parre vægten og valuen så vi ved de passer sammen?
+
+
+2. Definer antal objekter 
+	 N = W.length 					// er stort N altid antal objekter? og hvorfor W.length?
+
+3. Definér gridet:
+   DP[][] = [W.length + 1][C + 1]	// skal det ikke være Capacity og item?
+
+
+(UDFYLD GRIDET)
+for (hver objekt fra 1 til N) {
+	w = W[i-1]						// skal det ikke være i+1? eller er det fordi der hvor vi er, er altid i-1 fordi...
+	v = V[i-1]						// ... i+1 er det næste trin i rækken?
+
+	for (hver kapacitet fra 1 til C)  {
+	
+		Sæt nuværende værdi til forrige værdi i samme kolonne.
+		DP[i][sz] = DP[i-1][sz]
+		
+		Hvis nuværende capacity er større eller ligmed vores nuværende objekts vægt, 
+		og det forrige objekts værdi + nuværende objekts værdi, er større end den nuværende objekts værdi,
+		sæt værdien af nuværende celle til at indeholde det det forrige objekts værdi + nuværende objekts værdi.
+
+		if(sz >= w && DP[i-1][sz - nuværrende vægt] + nuværende værdi  > DP[i][sz]) {
+			sæt DP[i][sz] = DP[i-1][sz-w] +v
+		}
+	
+	  }
+	}
+
+
+(BACKTRACKING FOR AT FINDE VALGTE OBJEKTER)
+let itemsAdded = []
+
+	iterer fra sidste objekt til første objekt {
+		hvis nuværende objekts værdi ikke er ligmed forrige objekts værdi {
+			så ved vi at nuværende objekt er tilføjet
+			Fjern objektets vægt W[i] fra taskens capacitet C
+		}
+		returner itemsAdded arrayet
+	}
+
+
+for (let i = antal objekter; i> 0; i--) {
+if(DP[i][sz] != DP[i-1][sz]){
+		gem/tilføj objektet(i) i itemsAdded tasken
+		Fjern objektets vægt W[i] fra taskens capacitet C
+	}
+}
+
+Returner itemsAdded eller den samlede værdi DP[N][C]
+}
+
+
+
+ knapsack(Capacity, Weight, Value)
