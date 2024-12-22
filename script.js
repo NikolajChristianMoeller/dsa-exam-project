@@ -129,9 +129,26 @@ function generateTreasures(amount) {
     treasureValueArr.push(treasurepool[generateTreasure].value);
     treasureWeightArr.push(treasurepool[generateTreasure].weight);
   }
-  //console.log(treasurePicArr);
+  console.log(treasurePicArr);
   console.log(treasureValueArr);
   console.log(treasureWeightArr);
+  treasurePicArr.forEach(showArray)
+}
+
+function showArray(element, index) {
+  const table = document.querySelector("#treasure-table");
+
+  const html = /*html*/ `
+  <tr>
+  <td>${index + 1}</td>
+  <td>${treasurePicArr[index]}</td>
+  <td>${treasureWeightArr[index]}</td>
+  <td>${treasureValueArr[index]}</td>
+
+  `
+    table.insertAdjacentHTML("beforeend", html);
+
+
 }
 
 

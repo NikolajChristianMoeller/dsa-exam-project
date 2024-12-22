@@ -74,6 +74,15 @@ select[type="number"] {
   padding: 0.5em;
 }
 
+#treasure-table {
+font-family: "Courier New", Courier, monospace;
+  font-size: 10px;
+  color: #6e6;
+  background-color: #5b5b5b;
+  border: 1px solid black;
+  padding: 0.5em;
+}
+
 #solve-button {
   font-family: inherit;
   font-size: 12px;
