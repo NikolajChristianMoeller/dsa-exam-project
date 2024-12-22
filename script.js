@@ -7,6 +7,7 @@ let treasureValueArr = [];
 const C = 7;
 const W = [3, 1, 3, 4, 2];
 const V = [2, 2, 4, 5, 3];
+let DP;
 
 function knapSack() {
   // tjekker at der er en capacity
@@ -132,27 +133,43 @@ function generateTreasures(amount) {
   console.log(treasurePicArr);
   console.log(treasureValueArr);
   console.log(treasureWeightArr);
-  treasurePicArr.forEach(showArray)
+  clearTreasureTable();
+  treasurePicArr.forEach(showArray);
+  DP = createGrid(C, treasureValueArr.length);
+}
+
+function createGrid() {
+  // laver 2D arrayet
+  const DP = [];
+  for (let i = 0; i <= W.length; i++) {
+    const row = [];
+    DP.push(row);
+    for (let j = 0; j <= C; j++) {
+      const cell = 0;
+      row.push(cell);
+    }
+  }
+  return DP;
+}
+
+function displayGrid() {
+  const grid = document.querySelector(".grid");
 }
 
 function showArray(element, index) {
   const table = document.querySelector("#treasure-table");
 
   const html = /*html*/ `
-  <tr>
-  <td>${index + 1}</td>
-  <td>${treasurePicArr[index]}</td>
-  <td>${treasureWeightArr[index]}</td>
-  <td>${treasureValueArr[index]}</td>
+ <th> 
+ <td>${index + 1}</td>
+ <td>${treasurePicArr[index]}</td>
+ <td>${treasureWeightArr[index]}</td>
+ <td>${treasureValueArr[index]}</td>
+ </th>
 
-  `
-    table.insertAdjacentHTML("beforeend", html);
-
-
+  `;
+  table.insertAdjacentHTML("beforeend", html);
 }
-
-
-
 
 const treasurepool = {
   1: {
@@ -206,3 +223,12 @@ const treasurepool = {
     weight: 3,
   },
 };
+
+function clearTreasureTable() {
+  const table = document.querySelector("#treasure-table");
+  table.innerHTML = "";
+
+  while (table.rows.length > 1) {
+    table.deleteRow(1);
+  }
+}

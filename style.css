@@ -75,7 +75,7 @@ select[type="number"] {
 }
 
 #treasure-table {
-font-family: "Courier New", Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: 10px;
   color: #6e6;
   background-color: #5b5b5b;
@@ -107,8 +107,6 @@ font-family: "Courier New", Courier, monospace;
   text-align: right;
 }
 
-
-
 /********************************************** KLASSER **********************************************/
 
 .grid-header {
@@ -124,6 +122,8 @@ font-family: "Courier New", Courier, monospace;
   flex: 1;
   color: #6e6;
   display: grid;
+  min-width: 150px;
+  min-width: 200px;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(7, 1fr);
   gap: 1px;
@@ -138,6 +138,8 @@ font-family: "Courier New", Courier, monospace;
   justify-content: center;
   align-items: center;
   border: 1px solid black;
+  min-width: 10px;
+  min-height: 10px;
 }
 
 .chest-image {
