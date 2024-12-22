@@ -160,3 +160,10 @@ select[type='number'] {
         padding: 2px; /* Further reduce cell padding */
     }
 }
+
+/********************************************** TREASURE KLASSER **********************************************/
+
+.treasure-img {
+    width: 20px; /* Juster størrelse */
+    height: auto;
+}

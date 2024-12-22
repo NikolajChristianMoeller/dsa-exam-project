@@ -152,14 +152,18 @@ function displayGrid() {
 
 function showArray(element, index) {
     const table = document.querySelector('#treasure-table-content');
+    console.log(treasurePicArr[index]);
+    const imgPath = `./public/treasures/${treasurePicArr[index]}.svg`;
 
     const html = /*html*/ `
- <th> 
+ <tr> 
  <td>${index + 1}</td>
- <td>${treasurePicArr[index]}</td>
+ <td class="treasure-image">
+ <img src="${imgPath}" alt="${treasurePicArr[index]}" class="treasure-img">
+ </td>
  <td>${treasureWeightArr[index]}</td>
  <td>${treasureValueArr[index]}</td>
- </th>
+ </tr>
 
   `;
     table.insertAdjacentHTML('beforeend', html);
@@ -167,54 +171,59 @@ function showArray(element, index) {
 
 const treasurepool = {
     1: {
-        img: 'skull',
-        value: 5,
-        weight: 10,
-    },
-    2: {
-        img: 'sword',
-        value: 5,
-        weight: 10,
-    },
-    3: {
-        img: 'fish',
-        value: 5,
-        weight: 1,
-    },
-    4: {
         img: 'crown',
         value: 10,
+        weight: 8,
+    },
+    2: {
+        img: 'dagger',
+        value: 6,
+        weight: 5,
+    },
+    3: {
+        img: 'diamond_turkis',
+        value: 15,
+        weight: 2,
+    },
+    4: {
+        img: 'golden_totem',
+        value: 12,
         weight: 10,
     },
     5: {
-        img: 'golden-goose',
-        value: 5,
-        weight: 10,
+        img: 'golden_cup',
+        value: 8,
+        weight: 7,
     },
     6: {
-        img: 'sack-of-gold',
-        value: 5,
-        weight: 10,
+        img: 'golden_scull',
+        value: 10,
+        weight: 9,
     },
     7: {
-        img: 'redfin-snapper',
-        value: 5,
-        weight: 3,
-    },
-    8: {
-        img: 'rum',
-        value: 7,
-        weight: 10,
-    },
-    9: {
-        img: 'treasure-map',
-        value: 5,
+        img: 'golden_wine_glass',
+        value: 9,
         weight: 6,
     },
+    8: {
+        img: 'money_with_sword',
+        value: 11,
+        weight: 8,
+    },
+    9: {
+        img: 'ruby',
+        value: 14,
+        weight: 2,
+    },
     10: {
-        img: 'hook',
-        value: 4,
-        weight: 3,
+        img: 'silver_wine_glass',
+        value: 7,
+        weight: 5,
+    },
+    11: {
+        img: 'sword',
+        value: 9,
+        weight: 6,
     },
 };
 
