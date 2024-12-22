@@ -90,19 +90,25 @@ select[type="number"] {
   text-align: right;
 }
 
+#stop-button {
+  font-family: inherit;
+  font-size: 12px;
+  color: #6e6;
+  background-color: #d11212;
+  text-align: right;
+}
+
 
 
 /********************************************** KLASSER **********************************************/
 
-
-
 .grid-header {
   display: grid;
   font-family: "Courier New", Courier, monospace;
-  font-size: 18px;  /* Adjust as needed */
-  color: #6e6;  /* Same as your other headers */
+  font-size: 18px; /* Adjust as needed */
+  color: #6e6; /* Same as your other headers */
   text-align: center;
-  margin-bottom: 10px;  /* Add space between header and grid */
+  margin-bottom: 10px; /* Add space between header and grid */
 }
 
 .grid {
