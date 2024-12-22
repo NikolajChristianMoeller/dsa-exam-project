@@ -1,10 +1,8 @@
 window.addEventListener("load", init);
 
-const treasurePicArr = [];
-const treasureWeightArr = [];
-const treasureValueArr = [];
-
-
+let treasurePicArr = [];
+let treasureWeightArr = [];
+let treasureValueArr = [];
 
 const C = 7;
 const W = [3, 1, 3, 4, 2];
@@ -97,8 +95,9 @@ function setCapacity(event) {
 }
 
 function setTreasure(event) {
-  const treasures = event.target.value;
-  console.log("setTreasure: " + treasures);
+  const amount = event.target.value;
+  console.log("setTreasure: " + amount);
+  generateTreasures(amount);
 }
 
 function solveKnapsack() {
@@ -113,67 +112,80 @@ function stopKnapsack() {
   console.log("stopKnapsack");
 }
 
+function clearArrays() {
+  treasurePicArr = [];
+  treasureValueArr = [];
+  treasureWeightArr = [];
+}
 
-function generateTreasures () {
-  const generateTreasures = Math.floor(Math.random() * 10);
+function generateTreasures(amount) {
+  clearArrays();
 
-  // den skal generere treasure på baggrund af items får genereret en random
-  // værdi og vægt hver gang brugeren vælger treasures dropdownen
+  for (let i = 1; i <= amount; i++) {
+    const generateTreasure = Math.ceil(Math.random() * 10);
+    console.log("Generated this number: " + generateTreasure);
+
+    treasurePicArr.push(treasurepool[generateTreasure].img);
+    treasureValueArr.push(treasurepool[generateTreasure].value);
+    treasureWeightArr.push(treasurepool[generateTreasure].weight);
+  }
+  //console.log(treasurePicArr);
+  console.log(treasureValueArr);
+  console.log(treasureWeightArr);
+}
 
 
- }
 
- const treasurepool = {
+
+const treasurepool = {
   1: {
     img: "skull",
     value: 5,
-    weight: 10
+    weight: 10,
   },
-   2: {
+  2: {
     img: "sword",
     value: 5,
-    weight: 4
+    weight: 10,
   },
-   3 : {
+  3: {
     img: "fish",
     value: 5,
-    weight: 1
+    weight: 1,
   },
-   4: {
+  4: {
     img: "crown",
     value: 10,
-    weight: 10
+    weight: 10,
   },
-   5 : {
+  5: {
     img: "golden-goose",
     value: 5,
-    weight: 10
+    weight: 10,
   },
-   6 : {
+  6: {
     img: "sack-of-gold",
     value: 5,
-    weight: 10
+    weight: 10,
   },
-   7 : {
+  7: {
     img: "redfin-snapper",
     value: 5,
-    weight: 3
+    weight: 3,
   },
-   8 : {
+  8: {
     img: "rum",
     value: 7,
-    weight: 10
+    weight: 10,
   },
-   9: {
+  9: {
     img: "treasure-map",
     value: 5,
-    weight: 6
+    weight: 6,
   },
-   10 : {
+  10: {
     img: "hook",
     value: 4,
-    weight: 3
-  }
- }
-
- 
+    weight: 3,
+  },
+};
