@@ -1,29 +1,29 @@
 /********************************************** TYPER **********************************************/
 
 main {
-  display: flex;
+    display: flex;
 }
 
 body {
-  font-family: "Courier New", Courier, monospace;
-  color: black;
-  background-color: #666;
-  background-size: cover;
-  background-position: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+    background-color: #666;
+    background-size: cover;
+    background-position: center;
 }
 
 h1 {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 25px;
-  color: #6e6;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+    color: #6e6;
 }
 
-select[type="number"] {
-  font-family: "Courier New", Courier, monospace;
-  color: #6e6;
-  background-color: #5b5b5b;
-  text-align: right;
-  width: 4em;
+select[type='number'] {
+    font-family: 'Courier New', Courier, monospace;
+    color: #6e6;
+    background-color: #5b5b5b;
+    text-align: right;
+    width: 4em;
 }
 
 /* nav {
@@ -41,122 +41,122 @@ select[type="number"] {
 /********************************************** ID'ER **********************************************/
 
 #left-container {
-  width: 50%;
-  display: flex;
-  padding: 10px;
-  gap: 10px;
-  align-items: flex-start;
+    width: 50%;
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+    align-items: flex-start;
 }
 
 #right-container {
-  width: 50%;
-  display: flex;
-  padding: 10px;
-  flex-direction: row;
-  align-items: flex-start;
+    width: 50%;
+    display: flex;
+    padding: 10px;
+    flex-direction: row;
+    align-items: flex-start;
 }
 
 #info {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 10px;
-  color: #6e6;
-  background-color: #5b5b5b;
-  border: 1px solid black;
-  padding: 0.5em;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10px;
+    color: #6e6;
+    background-color: #5b5b5b;
+    border: 1px solid black;
+    padding: 0.5em;
 }
 
 #chest-info {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 10px;
-  color: #6e6;
-  background-color: #5b5b5b;
-  border: 1px solid black;
-  padding: 0.5em;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10px;
+    color: #6e6;
+    background-color: #5b5b5b;
+    border: 1px solid black;
+    padding: 0.5em;
 }
 
-#treasure-table {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 10px;
-  color: #6e6;
-  background-color: #5b5b5b;
-  border: 1px solid black;
-  padding: 0.5em;
+#treasure-table-header {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10px;
+    color: #6e6;
+    background-color: #5b5b5b;
+    border: 1px solid black;
+    padding: 0.5em;
 }
 
 #solve-button {
-  font-family: inherit;
-  font-size: 12px;
-  color: #6e6;
-  background-color: #5b5b5b;
-  text-align: right;
+    font-family: inherit;
+    font-size: 12px;
+    color: #6e6;
+    background-color: #5b5b5b;
+    text-align: right;
 }
 
 #reset-button {
-  font-family: inherit;
-  font-size: 12px;
-  color: #6e6;
-  background-color: #d11212;
-  text-align: right;
+    font-family: inherit;
+    font-size: 12px;
+    color: #6e6;
+    background-color: #d11212;
+    text-align: right;
 }
 
 #stop-button {
-  font-family: inherit;
-  font-size: 12px;
-  color: #6e6;
-  background-color: #d11212;
-  text-align: right;
+    font-family: inherit;
+    font-size: 12px;
+    color: #6e6;
+    background-color: #d11212;
+    text-align: right;
 }
 
 /********************************************** KLASSER **********************************************/
 
 .grid-header {
-  display: grid;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 18px; /* Adjust as needed */
-  color: #6e6; /* Same as your other headers */
-  text-align: center;
-  margin-bottom: 10px; /* Add space between header and grid */
+    display: grid;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px; /* Adjust as needed */
+    color: #6e6; /* Same as your other headers */
+    text-align: center;
+    margin-bottom: 10px; /* Add space between header and grid */
 }
 
 .grid {
-  flex: 1;
-  color: #6e6;
-  display: grid;
-  min-width: 150px;
-  min-width: 200px;
-  grid-template-columns: repeat(9, 1fr);
-  grid-template-rows: repeat(7, 1fr);
-  gap: 1px;
-  background-color: #5b5b5b;
-  aspect-ratio: 7 / 5;
+    flex: 1;
+    color: #6e6;
+    display: grid;
+    min-width: 150px;
+    min-width: 200px;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    gap: 1px;
+    background-color: #5b5b5b;
+    aspect-ratio: 7 / 5;
 }
 
 .cell {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-  min-width: 10px;
-  min-height: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    min-width: 10px;
+    min-height: 10px;
 }
 
 .chest-image {
-  height: 50%;
-  width: 50%;
-  object-fit: contain;
-  opacity: 0.5;
+    height: 50%;
+    width: 50%;
+    object-fit: contain;
+    opacity: 0.5;
 }
 
 @media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr); /* 4 columns on small screens */
-    gap: 1px; /* Further reduce the gap between cells */
-  }
+    .grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columns on small screens */
+        gap: 1px; /* Further reduce the gap between cells */
+    }
 
-  .cell {
-    font-size: 8px; /* Reduce font size for smaller screens */
-    padding: 2px; /* Further reduce cell padding */
-  }
+    .cell {
+        font-size: 8px; /* Reduce font size for smaller screens */
+        padding: 2px; /* Further reduce cell padding */
+    }
 }
