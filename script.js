@@ -1,7 +1,7 @@
-window.addEventListener('load', init);
+window.addEventListener("load", init);
 
-// ****** MODEL ******
-// #region Model
+// ******************************* MODEL *********************************
+//#region Model
 let treasurePicArr = [];
 let treasureWeightArr = [];
 let treasureValueArr = [];
@@ -61,10 +61,10 @@ function generateTreasures() {
   DP = createGrid();
   displayGrid();
 }
-// #endregion
+//#endregion
 
-// ****** VIEW ******
-// #region View
+// ******************************* VIEW **********************************
+//#region View
 function displayGrid() {
   const grid = document.querySelector(".grid");
   grid.innerHTML = "";
@@ -102,10 +102,10 @@ function showArray(element, index) {
   `;
   table.insertAdjacentHTML("beforeend", html);
 }
-// #endregion
+//#endregion
 
-// ****** CONTROLLER ******
-// #region Controller
+// **************************** CONTROLLER *******************************
+//#region Controller
 function init() {
   setUpEventListeners();
   setStartValues();
@@ -126,57 +126,59 @@ function setStartValues() {
   N = 1;
 }
 
-function knapSack() {
-    // tjekker at der er en capacity
-    if (C < 0 || W.length != V.length || W.length == null || V.length == null) {
-        throw new Error('Invalid input: Check that weights and values');
-    }
-    // laver 2D arrayet
-    // const DP = [];
-    // for (let i = 0; i <= W.length; i++) {
-    //     const row = [];
-    //     DP.push(row);
-    //     for (let j = 0; j <= C; j++) {
-    //         const cell = 0;
-    //         row.push(cell);
-    //     }
-    // }
-    // definer antal objekter
-    const N = W.length;
-    for (let i = 1; i <= N; i++) {
-        let w = W[i - 1];
-        let v = V[i - 1];
-
-        for (let c = 1; c <= C; c++) {
-            DP[i][c] = DP[i - 1][c];
-            if (c >= w && DP[i - 1][c - w] + v > DP[i][c]) {
-                DP[i][c] = DP[i - 1][c - w] + v;
-            }
-        }
-    }
-
-    let itemsAdded = [];
-    let capacity = C;
-
-    for (let i = N; i > 0; i--) {
-        // console.log("nuværende obj " + DP[i][capacity]);
-        // console.log("forrige obj " + DP[i - 1][capacity]);
-
-        if (DP[i][capacity] != DP[i - 1][capacity]) {
-            console.log();
-            itemsAdded.push(V[i - 1]);
-            capacity = capacity - W[i - 1];
-        } else {
-        }
-    }
-    return DP[N][C];
+function setCapacity(event) {
+  C = Number(event.target.value);
+  console.log("C set to " + C);
+  DP = createGrid();
+  displayGrid();
 }
 
-function setCapacity(event) {
-    C = Number(event.target.value);
-    console.log('C set to ' + C);
-    DP = createGrid();
-    displayGrid();
+function setTreasure(event) {
+  N = Number(event.target.value);
+  console.log("Treasure set to " + N);
+  generateTreasures();
+}
+
+function knapSack() {
+  if (C < 0 || W.length != V.length || W.length == null || V.length == null) {
+    throw new Error("Invalid input: Check that weights and values");
+  }
+  // laver 2D arrayet
+  // const DP = [];
+  // for (let i = 0; i <= W.length; i++) {
+  //     const row = [];
+  //     DP.push(row);
+  //     for (let j = 0; j <= C; j++) {
+  //         const cell = 0;
+  //         row.push(cell);
+  //     }
+  // }
+  // definer antal objekter
+  const N = W.length;
+  for (let i = 1; i <= N; i++) {
+    let w = W[i - 1];
+    let v = V[i - 1];
+
+    for (let c = 1; c <= C; c++) {
+      DP[i][c] = DP[i - 1][c];
+      if (c >= w && DP[i - 1][c - w] + v > DP[i][c]) {
+        DP[i][c] = DP[i - 1][c - w] + v;
+      }
+    }
+  }
+
+  let itemsAdded = [];
+  let capacity = C;
+
+  for (let i = N; i > 0; i--) {
+    // console.log("nuværende obj " + DP[i][capacity]);
+    // console.log("forrige obj " + DP[i - 1][capacity]);
+    if (DP[i][capacity] != DP[i - 1][capacity]) {
+      itemsAdded.push(V[i - 1]);
+      capacity = capacity - W[i - 1];
+    }
+  }
+  return DP[N][C];
 }
 
 function solveKnapsack() {
@@ -191,19 +193,14 @@ function stopKnapsack() {
   console.log("Clicked on Stop");
 }
 
-function setTreasure(event) {
-    N = Number(event.target.value);
-    console.log('Treasure set to ' + N);
-    generateTreasures();
-}
-
 function clearArrays() {
-    treasurePicArr = [];
-    treasureValueArr = [];
-    treasureWeightArr = [];
+  treasurePicArr = [];
+  treasureValueArr = [];
+  treasureWeightArr = [];
 }
 
 function clearTreasureTable() {
   const table = document.querySelector("#treasure-table-content");
   table.innerHTML = "";
 }
+//#endregion

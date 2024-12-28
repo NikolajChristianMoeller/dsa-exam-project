@@ -1,5 +1,5 @@
 /********************************************** TYPER **********************************************/
-
+/*#region TYPER */
 main {
     display: flex;
 }
@@ -25,21 +25,10 @@ select[type='number'] {
     text-align: right;
     width: 4em;
 }
-
-/* nav {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 14px;
-  color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 5px;
-  border: 1px solid black;
-  padding: 5px;
-} */
+/*#endregion */
 
 /********************************************** ID'ER **********************************************/
-
+/*#region ID'ER */
 #left-container {
     width: 50%;
     display: flex;
@@ -106,9 +95,10 @@ select[type='number'] {
     background-color: #d11212;
     text-align: right;
 }
+/*#endregion */
 
 /********************************************** KLASSER **********************************************/
-
+/*#region KLASSER */
 .grid-header {
     display: grid;
     font-family: 'Courier New', Courier, monospace;
@@ -117,8 +107,6 @@ select[type='number'] {
     text-align: center;
     margin-bottom: 10px; /* Add space between header and grid */
 }
-
-
 
 .grid {
     flex: 1;
@@ -135,11 +123,6 @@ select[type='number'] {
     aspect-ratio: 7 / 5;
 }
 
-
-
-
-
-
 .cell {
     font-family: 'Courier New', Courier, monospace;
     font-size: 12px;
@@ -151,11 +134,16 @@ select[type='number'] {
     min-height: 10px;
 }
 
-.chest-image {
+.chest-img {
     height: 50%;
     width: 50%;
     object-fit: contain;
     opacity: 0.5;
+}
+
+.treasure-img {
+    width: 20px; /* Juster størrelse */
+    height: auto;
 }
 
 @media (max-width: 768px) {
@@ -169,10 +157,4 @@ select[type='number'] {
         padding: 2px; /* Further reduce cell padding */
     }
 }
-
-/********************************************** TREASURE KLASSER **********************************************/
-
-.treasure-img {
-    width: 20px; /* Juster størrelse */
-    height: auto;
-}
+/*#endregion */
