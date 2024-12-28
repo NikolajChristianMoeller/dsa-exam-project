@@ -88,7 +88,10 @@ function setUpEventListeners() {
 
 function setCapacity(event) {
     C = Number(event.target.value);
+
     console.log('C set to ' + C);
+    DP = createGrid();
+    displayGrid();
 }
 
 function setStartValues() {
@@ -99,7 +102,7 @@ function setStartValues() {
 function setTreasure(event) {
     N = Number(event.target.value);
     console.log('Treasure set to ' + N);
-    generateTreasures(N);
+    generateTreasures();
 }
 
 function solveKnapsack() {
@@ -120,61 +123,62 @@ function clearArrays() {
     treasureWeightArr = [];
 }
 
-function generateTreasures(amount) {
+function generateTreasures() {
     clearArrays();
 
-    for (let i = 1; i <= amount; i++) {
-        const generateTreasure = Math.ceil(Math.random() * 10);
+    for (let i = 1; i <= N; i++) {
+        const generateTreasure = Math.ceil(Math.random() * 11);
         console.log('Generated number ' + generateTreasure);
 
         treasurePicArr.push(treasurepool[generateTreasure].img);
         treasureValueArr.push(treasurepool[generateTreasure].value);
         treasureWeightArr.push(treasurepool[generateTreasure].weight);
     }
-    console.log(treasurePicArr);
-    console.log(treasureValueArr);
-    console.log(treasureWeightArr);
+
     clearTreasureTable();
     treasurePicArr.forEach(showArray);
-    DP = createGrid(C, treasureValueArr.length);
+    DP = createGrid();
     displayGrid();
 }
 
 function createGrid() {
-    // laver 2D arrayet
-    const DP = [];
-    console.log(N + 1, C + 1)
-    for (let i = 0; i <= N; i++) {
-        const row = [];
-        DP.push(row);
-        for (let j = 0; j <= C; j++) {
-            const cell = 0;
-            row.push(cell);
-        }
+  const grid = [];
+  for (let i = 0; i <= N + 1; i++) {
+    const row = [];
+    grid.push(row);
+    for (let j = 0; j <= C + 1; j++) {
+      if (i === 0 && j > 1) {
+        row.push(j - 1); // Første række med kapacitet (værdier)
+      } else if (j === 0 && i > 1) {
+        row.push(i - 1); // Første kolonne med objekter
+      } else {
+        row.push(0); // Resten er 0
+      }
     }
-    
-    console.log(DP)
-    return DP;
+  }
+  console.log(grid)
+  return grid;
 }
 
+
 function displayGrid() {
-    const grid = document.querySelector('.grid');
-    grid.style.setProperty("--C", C);
-    grid.style.setProperty("--N", N);
-    for (let row = 0; row < N; row ++) {
-        for (let col = 0; col < C; col ++) {
-            // const cell = document.createElement("div");
-            // cell.classList.add("cell");
-            // grid.appendChild(cell);
-            const cell = /*html*/ `
+  const grid = document.querySelector(".grid");
+  grid.innerHTML = "";
+  grid.style.setProperty("--C", C + 2); // Tilføj ekstra kolonner
+  grid.style.setProperty("--N", N + 2); // Tilføj ekstra rækker
+
+  for (let row = 0; row < N + 2; row++) {
+    for (let col = 0; col < C + 2; col++) {
+      const cellValue = DP[row][col]; // Få værdien fra DP-arrayet
+      const cell = /*html*/ `
             <div class="cell">
-            0
-            </div>`
-            grid.insertAdjacentHTML('beforeend', cell)
-        }
+            ${cellValue}
+            </div>`;
+      grid.insertAdjacentHTML("beforeend", cell);
     }
-    
+  }
 }
+
 
 function showArray(element, index) {
     const table = document.querySelector('#treasure-table-content');
