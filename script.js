@@ -87,7 +87,7 @@ function setUpEventListeners() {
 }
 
 function setCapacity(event) {
-    C = event.target.value;
+    C = Number(event.target.value);
     console.log('C set to ' + C);
 }
 
@@ -97,7 +97,7 @@ function setStartValues() {
 }
 
 function setTreasure(event) {
-    N = event.target.value;
+    N = Number(event.target.value);
     console.log('Treasure set to ' + N);
     generateTreasures(N);
 }
@@ -143,6 +143,7 @@ function generateTreasures(amount) {
 function createGrid() {
     // laver 2D arrayet
     const DP = [];
+    console.log(N + 1, C + 1)
     for (let i = 0; i <= N; i++) {
         const row = [];
         DP.push(row);
@@ -151,7 +152,8 @@ function createGrid() {
             row.push(cell);
         }
     }
-
+    
+    console.log(DP)
     return DP;
 }
 
