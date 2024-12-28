@@ -72,9 +72,4 @@ Returner itemsAdded eller den samlede værdi DP[N][C]
 
 // Vi skal vel gøre den rekursiv og have ticks*
 
- 1. Få implementeret vores algoritme
-	b. Vi skal lave et array til at holde på vores billeder så de kan hentes
-	c. Grid functioner (opret, updater, udfyld)
-	d. Reverse funktion
-	e. Evt. grid klasse
- 2. 
+ 1. Vi skal kigge på capacity 

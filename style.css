@@ -118,18 +118,27 @@ select[type='number'] {
     margin-bottom: 10px; /* Add space between header and grid */
 }
 
+
+
 .grid {
     flex: 1;
     color: #6e6;
     display: grid;
     min-width: 150px;
     min-width: 200px;
-    grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(7, 1fr);
+    grid-template-columns: repeat(var(--C), max-content);
+    grid-template-rows: repeat(var(--N), max-content);
+    /* grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(7, 1fr); */
     gap: 1px;
     background-color: #5b5b5b;
     aspect-ratio: 7 / 5;
 }
+
+
+
+
+
 
 .cell {
     font-family: 'Courier New', Courier, monospace;
