@@ -9,6 +9,7 @@ let valueArr = [];
 let maxCapacity = 0;
 let i = 2;
 let c = 2;
+let gridIsFull = false
 
 let N = 0;
 let DP;
@@ -134,13 +135,20 @@ function setStartValues() {
 }
 
 function setCapacity(event) {
+  resetColAndRowValues();
   maxCapacity = Number(event.target.value);
   console.log("C set to " + maxCapacity);
   DP = createGrid();
   displayGrid();
 }
 
+function resetColAndRowValues() {
+  c = 2;
+  i = 2;
+}
+
 function setTreasure(event) {
+  resetColAndRowValues();
   N = Number(event.target.value);
   console.log("Treasure set to " + N);
   generateTreasures();
@@ -176,6 +184,7 @@ function knapSack() {
     if (capacity >= w && DP[i - 1][c - w] + v > DP[i][c]) {
       DP[i][c] = DP[i - 1][c - w] + v;
     }
+
     console.log("nuværende celle" + DP[i][c]);
     
     c++
@@ -184,7 +193,16 @@ function knapSack() {
     i++;
     c = 2;
   }
-  }
+  } else if(i > N + 1) {
+  gridIsFull = true;
+  console.log("I'm done mofos******");
+  stopGameInterval();
+  resetColAndRowValues();
+  }  
+  
+  
+ 
+  
   console.log("GRID")
   console.log(DP)
   displayGrid();
@@ -212,7 +230,7 @@ function startGameInterval() {
   stopGameInterval()
   gameInterval = setInterval(() => {
   knapSack();
-  }, 500)
+  }, 250)
 }
 
 function stopGameInterval() {
@@ -234,6 +252,7 @@ function stopKnapsackButton() {
   console.log("Clicked on Stop");
   stopGameInterval();
 }
+
 
 // function continueKnapsackButton() {
 //   console.log("Clicked on Stop");
