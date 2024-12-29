@@ -41,27 +41,27 @@ select[type='number'] {
 #left-container {
     width: 50%;
     display: flex;
-    padding: 10px;
-    gap: 10px;
+    padding: 5px;
+    gap: 5px;
     align-items: flex-start;
 }
 
 #right-container {
     width: 50%;
     display: flex;
-    padding: 10px;
+    padding: 5px;
     flex-direction: row;
     align-items: flex-start;
 }
 
-#info {
+#solver-info {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 10px;
+    font-size: 12px;
     flex-grow: 1;
     color: #6e6;
     background-color: #5b5b5b;
     border: 1px solid black;
-    padding: 0.5em;
+    padding: 5px;
 }
 
 #chest-info {
@@ -117,13 +117,27 @@ select[type='number'] {
 
 /************************************ KLASSER **********************************/
 /*#region KLASSER */
-.grid-header {
-    display: grid;
+
+.solver-header {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 15px; /* Adjust as needed */
-    color: #6e6; /* Same as your other headers */
+    font-size: 15px;
+    color: #6e6;
+    margin-bottom: 5px; /* Space between header and grid */
     text-align: left;
-    margin-bottom: 10px; /* Add space between header and grid */
+}
+
+.grid-header {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    color: #6e6;
+    margin-bottom: 0.5em; /* Space between header and grid */
+    text-align: left;
+}
+
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align the header and grid to the left */
 }
 
 .grid {
@@ -131,13 +145,10 @@ select[type='number'] {
     border: 1px solid black;
     color: #6e6;
     display: grid;
-    padding: 0.2em;
-    min-width: 150px;
+    padding: 5px;
     min-width: 200px;
     grid-template-columns: repeat(var(--C), max-content);
     grid-template-rows: repeat(var(--N), max-content);
-    /* grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(7, 1fr); */
     gap: 1px;
     background-color: #5b5b5b;
     aspect-ratio: 7 / 5;
