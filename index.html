@@ -15,7 +15,8 @@
                 <div id="left-container">
                     <div id="info">
                         <h2>Solver</h2>
-                        <label for="capacity">Capacity: (kg)</label>
+                        <p>
+                        Capacity (kg)
                         <select type="number" id="capacity">
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -25,8 +26,10 @@
                             <option value="6">6</option>
                             <option value="7">7</option>
                         </select><br><br>
-                        <label for="value">Treasures:</label>
-                        <select type="number" id="treasures">
+                        </p>
+                        <p>
+                        Treasures (kr)
+                            <select type="number" id="treasures">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -35,9 +38,11 @@
                             <option value="6">6</option>
                             <option value="7">7</option>
                         </select><br><br>
+                        </p>
                         <button id="solve-button">Solve</button>
                         <button id="reset-button">Reset</button>
                         <button id="stop-button">Stop</button>
+                        <button id="continue-button">Continue</button>
                     </div>
                     <h2 class="grid-header">Capacity (kg)</h2>
                     <div class="grid">
@@ -115,11 +120,15 @@
                 <div id="right-container">
                     <div id="chest-info">
                         <h2>Chest</h2>
-                        <label for="capacity">Current Capacity: 0 kilo.</label>
-                        <br><br>
-                        <label for="weights">Current Weight: 0 kilo.</label>
-                        <br><br>
-                        <label for="values">Current Value: 0 kr.</label>
+                        <p>
+                          Current Capacity 0 kg.
+                        </p>
+                        <p>
+                          Current Weight 0 kg.
+                        </p>
+                        <p>
+                          Current Value 0 kr.
+                        </p>
                     </div>
                     <img src="./public/chest.png" alt="Chest" class="chest-img">
                    

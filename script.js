@@ -127,6 +127,7 @@ function setUpEventListeners() {
   document.querySelector("#solve-button").addEventListener("click", solveKnapsackButton);
   document.querySelector("#reset-button").addEventListener("click", resetKnapsackButton);
   document.querySelector("#stop-button").addEventListener("click", stopKnapsackButton);
+  document.querySelector("#continue-button").addEventListener("click", continueKnapsackButton);
 }
 
 function setStartValues() {
@@ -195,6 +196,8 @@ function knapSackBacktrack() {
       capacity = capacity - weightArr[i - 1];
     }
     i--;
+  // } else {
+  //   stopGameInterval();
   }
   console.log(itemsAdded)
   return DP[N][maxCapacity];
@@ -232,9 +235,9 @@ function stopKnapsackButton() {
   stopGameInterval();
 }
 
-// function continueKnapsackButton() {
-//   console.log("Clicked on Stop");
-// }
+function continueKnapsackButton() {
+  console.log("Clicked on Continue");
+}
 
 function clearArrays() {
   picArr = [];
