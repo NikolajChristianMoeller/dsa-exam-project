@@ -15,13 +15,13 @@ const treasurePool = {
   2: { img: "dagger", value: 6, weight: 2 },
   3: { img: "diamond_turkis", value: 15, weight: 3 },
   4: { img: "golden_totem", value: 12, weight: 4 },
-  5: { img: "golden_cup", value: 8, weight: 5 },
-  6: { img: "golden_scull", value: 10, weight: 6 },
-  7: { img: "golden_wine_glass", value: 9, weight: 5 },
-  8: { img: "money_with_sword", value: 11, weight: 5 },
-  9: { img: "ruby", value: 14, weight: 5 },
-  10: { img: "silver_wine_glass", value: 7, weight: 5 },
-  11: { img: "sword", value: 9, weight: 5 },
+  5: { img: "golden_cup", value: 8, weight: 1 },
+  6: { img: "golden_scull", value: 10, weight: 3 },
+  7: { img: "golden_wine_glass", value: 9, weight: 1 },
+  8: { img: "money_with_sword", value: 11, weight: 2 },
+  9: { img: "ruby", value: 14, weight: 1 },
+  10: { img: "silver_wine_glass", value: 7, weight: 1 },
+  11: { img: "sword", value: 9, weight: 4 },
 };
 
 function createGrid() {
@@ -150,28 +150,34 @@ function knapSack() {
   }
   console.log("knapSack starter")
   console.log(DP);
-  // laver 2D arrayet
-  // const DP = [];
-  // for (let i = 0; i <= W.length; i++) {
-  //     const row = [];
-  //     DP.push(row);
-  //     for (let j = 0; j <= C; j++) {
-  //         const cell = 0;
-  //         row.push(cell);
-  //     }
-  // }
-  // definer antal objekter
-  //const N = W.length;
   for (let i = 2; i <= N + 1; i++) {
-    let w = weightArr[i - 1];
-    let v = valueArr[i - 1];
-
+    let w = weightArr[i - 2];
+    let v = valueArr[i - 2];
+    
     for (let c = 2; c <= maxCapacity + 1; c++) {
+
+      console.log("===============================")
+      //console.log(DP[i][0]);
+      const capacity = c - 1
+      console.log(`Row ${i} : Col ${c}`)
+      console.log(`Capacity: ${capacity}`)
+      console.log(" ---- MATH TIME ---- ")
+      console.log(`${capacity} >= ${w} && DP[${i}-1][${capacity}-${w}] + ${v} > DP[${i}][${c}]`);
+      console.log(
+        `${capacity} >= ${w} && ${DP[i-1][capacity-w]} + ${v} > ${DP[i][c]}`
+      );
+      
+      
+    
       DP[i][c] = DP[i - 1][c];
+
+
+          //console.log("cell : "+ DP[i][c]);
       // setTimeout skal stoppe her ^ gør at vi ser på nuværende celle
-      if (c >= w && DP[i - 1][c - w] + v > DP[i][c]) {
+      if (capacity >= w && DP[i - 1][c - w] + v > DP[i][c]) {
         DP[i][c] = DP[i - 1][c - w] + v;
       }
+      console.log("nuværende celle"  + DP[i][c]);
     }
   }
 
