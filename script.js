@@ -135,6 +135,7 @@ function setStartValues() {
 }
 
 function setCapacity(event) {
+  stopGameInterval()
   resetColAndRowValues();
   maxCapacity = Number(event.target.value);
   console.log("C set to " + maxCapacity);
@@ -148,6 +149,7 @@ function resetColAndRowValues() {
 }
 
 function setTreasure(event) {
+  stopGameInterval();
   resetColAndRowValues();
   N = Number(event.target.value);
   console.log("Treasure set to " + N);
