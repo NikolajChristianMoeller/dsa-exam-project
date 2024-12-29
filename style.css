@@ -32,6 +32,7 @@ select[type='number'] {
     text-align: right;
     width: 4em;
     font-size: 12px;
+    
 }
 /*#endregion */
 
@@ -61,12 +62,6 @@ select[type='number'] {
     background-color: #5b5b5b;
     border: 1px solid black;
     padding: 0.5em;
-}
-
-#info p {
-  display: flex;
-  font-size: 12px;
-  width: 4em;
 }
 
 #chest-info {
@@ -127,7 +122,7 @@ select[type='number'] {
     font-family: 'Courier New', Courier, monospace;
     font-size: 15px; /* Adjust as needed */
     color: #6e6; /* Same as your other headers */
-    text-align: center;
+    text-align: left;
     margin-bottom: 10px; /* Add space between header and grid */
 }
 
@@ -169,17 +164,5 @@ select[type='number'] {
 .treasure-img {
     width: 20px; /* Juster størrelse */
     height: auto;
-}
-
-@media (max-width: 768px) {
-    .grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 columns on small screens */
-        gap: 1px; /* Further reduce the gap between cells */
-    }
-
-    .cell {
-        font-size: 8px; /* Reduce font size for smaller screens */
-        padding: 2px; /* Further reduce cell padding */
-    }
 }
 /*#endregion */
