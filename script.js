@@ -2,27 +2,26 @@ window.addEventListener("load", init);
 
 // ******************************* MODEL *********************************
 //#region Model
-let treasurePicArr = [];
-let treasureWeightArr = [];
-let treasureValueArr = [];
-let C = 0;
+let gameInterval;
+let picArr = [];
+let weightArr = [];
+let valueArr = [];
+let maxCapacity = 0;
 let N = 0;
 let DP;
 
-const W = [3, 1, 3, 4, 2];
-const V = [2, 2, 4, 5, 3];
-const treasurepool = {
-  1: { img: "crown", value: 10, weight: 8 },
-  2: { img: "dagger", value: 6, weight: 5 },
-  3: { img: "diamond_turkis", value: 15, weight: 2 },
-  4: { img: "golden_totem", value: 12, weight: 10 },
-  5: { img: "golden_cup", value: 8, weight: 7 },
-  6: { img: "golden_scull", value: 10, weight: 9 },
-  7: { img: "golden_wine_glass", value: 9, weight: 6 },
-  8: { img: "money_with_sword", value: 11, weight: 8 },
-  9: { img: "ruby", value: 14, weight: 2 },
+const treasurePool = {
+  1: { img: "crown", value: 10, weight: 1 },
+  2: { img: "dagger", value: 6, weight: 2 },
+  3: { img: "diamond_turkis", value: 15, weight: 3 },
+  4: { img: "golden_totem", value: 12, weight: 4 },
+  5: { img: "golden_cup", value: 8, weight: 5 },
+  6: { img: "golden_scull", value: 10, weight: 6 },
+  7: { img: "golden_wine_glass", value: 9, weight: 5 },
+  8: { img: "money_with_sword", value: 11, weight: 5 },
+  9: { img: "ruby", value: 14, weight: 5 },
   10: { img: "silver_wine_glass", value: 7, weight: 5 },
-  11: { img: "sword", value: 9, weight: 6 },
+  11: { img: "sword", value: 9, weight: 5 },
 };
 
 function createGrid() {
@@ -30,7 +29,7 @@ function createGrid() {
   for (let i = 0; i <= N + 1; i++) {
     const row = [];
     grid.push(row);
-    for (let j = 0; j <= C + 1; j++) {
+    for (let j = 0; j <= maxCapacity + 1; j++) {
       if (i === 0 && j > 1) {
         row.push(j - 1); // Første række med kapacitet (værdier)
       } else if (j === 0 && i > 1) {
@@ -51,13 +50,13 @@ function generateTreasures() {
     const generateTreasure = Math.ceil(Math.random() * 11);
     console.log("Generated number " + generateTreasure);
 
-    treasurePicArr.push(treasurepool[generateTreasure].img);
-    treasureValueArr.push(treasurepool[generateTreasure].value);
-    treasureWeightArr.push(treasurepool[generateTreasure].weight);
+    picArr.push(treasurePool[generateTreasure].img);
+    valueArr.push(treasurePool[generateTreasure].value);
+    weightArr.push(treasurePool[generateTreasure].weight);
   }
 
   clearTreasureTable();
-  treasurePicArr.forEach(showArray);
+  picArr.forEach(showArray);
   DP = createGrid();
   displayGrid();
 }
@@ -68,11 +67,11 @@ function generateTreasures() {
 function displayGrid() {
   const grid = document.querySelector(".grid");
   grid.innerHTML = "";
-  grid.style.setProperty("--C", C + 2); // Tilføj ekstra kolonner
+  grid.style.setProperty("--C", maxCapacity + 2); // Tilføj ekstra kolonner
   grid.style.setProperty("--N", N + 2); // Tilføj ekstra rækker
 
   for (let row = 0; row < N + 2; row++) {
-    for (let col = 0; col < C + 2; col++) {
+    for (let col = 0; col < maxCapacity + 2; col++) {
       const cellValue = DP[row][col]; // Få værdien fra DP-arrayet
       const cell = /*html*/ `
             <div class="cell">
@@ -85,19 +84,19 @@ function displayGrid() {
 
 function showArray(element, index) {
   const table = document.querySelector("#treasure-table-content");
-  console.log(treasurePicArr[index]);
-  const imgPath = `./public/treasures/${treasurePicArr[index]}.svg`;
+  console.log(picArr[index]);
+  const imgPath = `./public/treasures/${picArr[index]}.svg`;
 
   const html = /*html*/ `
             <tr> 
                 <td>${index + 1}</td>
                 <td class="treasure-image">
                     <img src="${imgPath}" alt="${
-    treasurePicArr[index]
+    picArr[index]
   }" class="treasure-img">
                 </td>
-                <td>${treasureWeightArr[index]}</td>
-                <td>${treasureValueArr[index]}</td>
+                <td>${weightArr[index]}</td>
+                <td>${valueArr[index]}</td>
             </tr>
   `;
   table.insertAdjacentHTML("beforeend", html);
@@ -110,25 +109,31 @@ function init() {
   setUpEventListeners();
   setStartValues();
   DP = createGrid();
-  displayGrid();
+  //knapSack();
+  //displayGrid();
+  clearInterval(gameInterval);
+  // gameInterval = setInterval(() => {
+  //   bubbleSort(array);
+  //   renderArray();
+  // }, 2000);
 }
 
 function setUpEventListeners() {
   document.querySelector("#capacity").addEventListener("change", setCapacity);
   document.querySelector("#treasures").addEventListener("change", setTreasure);
-  document.querySelector("#solve-button").addEventListener("click", solveKnapsack);
-  document.querySelector("#reset-button").addEventListener("click", resetKnapsack);
-  document.querySelector("#stop-button").addEventListener("click", stopKnapsack);
+  document.querySelector("#solve-button").addEventListener("click", solveKnapsackButton);
+  document.querySelector("#reset-button").addEventListener("click", resetKnapsackButton);
+  document.querySelector("#stop-button").addEventListener("click", stopKnapsackButton);
 }
 
 function setStartValues() {
-  C = 1;
+  maxCapacity = 1;
   N = 1;
 }
 
 function setCapacity(event) {
-  C = Number(event.target.value);
-  console.log("C set to " + C);
+  maxCapacity = Number(event.target.value);
+  console.log("C set to " + maxCapacity);
   DP = createGrid();
   displayGrid();
 }
@@ -140,9 +145,11 @@ function setTreasure(event) {
 }
 
 function knapSack() {
-  if (C < 0 || W.length != V.length || W.length == null || V.length == null) {
+  if (maxCapacity < 0 || weightArr.length != valueArr.length || weightArr.length == null || valueArr.length == null) {
     throw new Error("Invalid input: Check that weights and values");
   }
+  console.log("knapSack starter")
+  console.log(DP);
   // laver 2D arrayet
   // const DP = [];
   // for (let i = 0; i <= W.length; i++) {
@@ -154,13 +161,14 @@ function knapSack() {
   //     }
   // }
   // definer antal objekter
-  const N = W.length;
-  for (let i = 1; i <= N; i++) {
-    let w = W[i - 1];
-    let v = V[i - 1];
+  //const N = W.length;
+  for (let i = 2; i <= N + 1; i++) {
+    let w = weightArr[i - 1];
+    let v = valueArr[i - 1];
 
-    for (let c = 1; c <= C; c++) {
+    for (let c = 2; c <= maxCapacity + 1; c++) {
       DP[i][c] = DP[i - 1][c];
+      // setTimeout skal stoppe her ^ gør at vi ser på nuværende celle
       if (c >= w && DP[i - 1][c - w] + v > DP[i][c]) {
         DP[i][c] = DP[i - 1][c - w] + v;
       }
@@ -168,35 +176,58 @@ function knapSack() {
   }
 
   let itemsAdded = [];
-  let capacity = C;
+  let capacity = maxCapacity;
 
   for (let i = N; i > 0; i--) {
     // console.log("nuværende obj " + DP[i][capacity]);
     // console.log("forrige obj " + DP[i - 1][capacity]);
     if (DP[i][capacity] != DP[i - 1][capacity]) {
-      itemsAdded.push(V[i - 1]);
-      capacity = capacity - W[i - 1];
+      itemsAdded.push(valueArr[i - 1]);
+      capacity = capacity - weightArr[i - 1];
     }
+    // hvis værdien er den samme som forrige 
+    // else if (DP[i][capacity] === DP[i - 1][capacity]) {
+    //   capacity = capacity
+    // }
   }
-  return DP[N][C];
+  return DP[N][maxCapacity];
 }
 
-function solveKnapsack() {
+function startGameInterval() {
+  stopGameInterval()
+  gameInterval = setInterval(() => {
+  console.log(gameInterval);
+  }, 2000)
+}
+
+function stopGameInterval() {
+  clearInterval(gameInterval)
+}
+
+function solveKnapsackButton() {
   console.log("Clicked on Solve");
+  //startGameInterval();
+  knapSack();
+  displayGrid();
 }
 
-function resetKnapsack() {
+function resetKnapsackButton() {
   console.log("Clicked on Reset");
 }
 
-function stopKnapsack() {
+function stopKnapsackButton() {
   console.log("Clicked on Stop");
+  stopGameInterval();
 }
 
+// function continueKnapsackButton() {
+//   console.log("Clicked on Stop");
+// }
+
 function clearArrays() {
-  treasurePicArr = [];
-  treasureValueArr = [];
-  treasureWeightArr = [];
+  picArr = [];
+  valueArr = [];
+  weightArr = [];
 }
 
 function clearTreasureTable() {
