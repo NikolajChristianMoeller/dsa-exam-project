@@ -7,6 +7,9 @@ let picArr = [];
 let weightArr = [];
 let valueArr = [];
 let maxCapacity = 0;
+let i = 2;
+let c = 2;
+
 let N = 0;
 let DP;
 
@@ -109,8 +112,7 @@ function init() {
   setUpEventListeners();
   setStartValues();
   DP = createGrid();
-  //knapSack();
-  //displayGrid();
+  displayGrid();
   clearInterval(gameInterval);
   // gameInterval = setInterval(() => {
   //   bubbleSort(array);
@@ -148,38 +150,45 @@ function knapSack() {
   if (maxCapacity < 0 || weightArr.length != valueArr.length || weightArr.length == null || valueArr.length == null) {
     throw new Error("Invalid input: Check that weights and values");
   }
-  console.log("knapSack starter")
-  console.log(DP);
-  for (let i = 2; i <= N + 1; i++) {
-    let w = weightArr[i - 2];
-    let v = valueArr[i - 2];
-    
-    for (let c = 2; c <= maxCapacity + 1; c++) {
+  //console.log("knapSack starter")
+  //for (let i = 2; i <= N + 1; i++) {
+  if (i <= N + 1) {
+  let w = weightArr[i - 2];
+  let v = valueArr[i - 2];
 
-      console.log("===============================")
-      //console.log(DP[i][0]);
-      const capacity = c - 1
-      console.log(`Row ${i} : Col ${c}`)
-      console.log(`Capacity: ${capacity}`)
-      console.log(" ---- MATH TIME ---- ")
-      console.log(`${capacity} >= ${w} && DP[${i}-1][${capacity}-${w}] + ${v} > DP[${i}][${c}]`);
-      console.log(
-        `${capacity} >= ${w} && ${DP[i-1][capacity-w]} + ${v} > ${DP[i][c]}`
-      );
-      
-      
-    
-      DP[i][c] = DP[i - 1][c];
-
-
-          //console.log("cell : "+ DP[i][c]);
-      // setTimeout skal stoppe her ^ gør at vi ser på nuværende celle
-      if (capacity >= w && DP[i - 1][c - w] + v > DP[i][c]) {
-        DP[i][c] = DP[i - 1][c - w] + v;
-      }
-      console.log("nuværende celle"  + DP[i][c]);
+  //for (let c = 2; c <= maxCapacity + 1; c++) {
+  if (c <= maxCapacity + 1) {
+    console.log("===============================");
+    //console.log(DP[i][0]);
+    const capacity = c - 1;
+    // console.log(`Row ${i} : Col ${c}`);
+    // console.log(`Capacity: ${capacity}`);
+    // console.log(" ---- MATH TIME ---- ");
+    // console.log(
+    //   `${capacity} >= ${w} && DP[${i}-1][${capacity}-${w}] + ${v} > DP[${i}][${c}]`
+    // );
+    // console.log(
+    //   `${capacity} >= ${w} && ${DP[i - 1][capacity - w]} + ${v} > ${DP[i][c]}`
+    // );
+    DP[i][c] = DP[i - 1][c];
+    // console.log("cell : "+ DP[i][c]);
+    // setTimeout skal stoppe her ^ gør at vi ser på nuværende celle
+    if (capacity >= w && DP[i - 1][c - w] + v > DP[i][c]) {
+      DP[i][c] = DP[i - 1][c - w] + v;
     }
+    console.log("nuværende celle" + DP[i][c]);
+    
+    c++
+    //}
+  } else if( c > maxCapacity + 1) {
+    i++;
+    c = 2;
   }
+  }
+  console.log("GRID")
+  console.log(DP)
+  displayGrid();
+  //}
 
   let itemsAdded = [];
   let capacity = maxCapacity;
@@ -202,8 +211,8 @@ function knapSack() {
 function startGameInterval() {
   stopGameInterval()
   gameInterval = setInterval(() => {
-  console.log(gameInterval);
-  }, 2000)
+  knapSack();
+  }, 500)
 }
 
 function stopGameInterval() {
@@ -212,7 +221,7 @@ function stopGameInterval() {
 
 function solveKnapsackButton() {
   console.log("Clicked on Solve");
-  //startGameInterval();
+  startGameInterval();
   knapSack();
   displayGrid();
 }
