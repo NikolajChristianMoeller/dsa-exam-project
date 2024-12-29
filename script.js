@@ -35,11 +35,11 @@ function createGrid() {
     grid.push(row);
     for (let j = 0; j <= maxCapacity + 1; j++) {
       if (i === 0 && j > 1) {
-        row.push(j - 1); // Første række med kapacitet (værdier)
+        row.push(j - 1);
       } else if (j === 0 && i > 1) {
-        row.push(i - 1); // Første kolonne med objekter
+        row.push(i - 1);
       } else {
-        row.push(0); // Resten er 0
+        row.push(0);
       }
     }
   }
@@ -71,12 +71,12 @@ function generateTreasures() {
 function displayGrid() {
   const grid = document.querySelector(".grid");
   grid.innerHTML = "";
-  grid.style.setProperty("--C", maxCapacity + 2); // Tilføj ekstra kolonner
-  grid.style.setProperty("--N", N + 2); // Tilføj ekstra rækker
+  grid.style.setProperty("--C", maxCapacity + 2);
+  grid.style.setProperty("--N", N + 2);
 
   for (let row = 0; row < N + 2; row++) {
     for (let col = 0; col < maxCapacity + 2; col++) {
-      const cellValue = DP[row][col]; // Få værdien fra DP-arrayet
+      const cellValue = DP[row][col];
       const cell = /*html*/ `
             <div class="cell">
             ${cellValue}
@@ -160,79 +160,56 @@ function knapSack() {
   if (maxCapacity < 0 || weightArr.length != valueArr.length || weightArr.length == null || valueArr.length == null) {
     throw new Error("Invalid input: Check that weights and values");
   }
-  //console.log("knapSack starter")
-  //for (let i = 2; i <= N + 1; i++) {
   if (i <= N + 1) {
   let w = weightArr[i - 2];
   let v = valueArr[i - 2];
 
-  //for (let c = 2; c <= maxCapacity + 1; c++) {
   if (c <= maxCapacity + 1) {
-    console.log("===============================");
-    //console.log(DP[i][0]);
     const capacity = c - 1;
-    // console.log(`Row ${i} : Col ${c}`);
-    // console.log(`Capacity: ${capacity}`);
-    // console.log(" ---- MATH TIME ---- ");
-    // console.log(
-    //   `${capacity} >= ${w} && DP[${i}-1][${capacity}-${w}] + ${v} > DP[${i}][${c}]`
-    // );
-    // console.log(
-    //   `${capacity} >= ${w} && ${DP[i - 1][capacity - w]} + ${v} > ${DP[i][c]}`
-    // );
     DP[i][c] = DP[i - 1][c];
-    // console.log("cell : "+ DP[i][c]);
-    // setTimeout skal stoppe her ^ gør at vi ser på nuværende celle
     if (capacity >= w && DP[i - 1][c - w] + v > DP[i][c]) {
       DP[i][c] = DP[i - 1][c - w] + v;
     }
-
     console.log("nuværende celle" + DP[i][c]);
-    
+
     c++
-    //}
   } else if( c > maxCapacity + 1) {
     i++;
     c = 2;
   }
   } else if(i > N + 1) {
   gridIsFull = true;
-  console.log("I'm done mofos******");
-  stopGameInterval();
-  resetColAndRowValues();
-  }  
-  
-  
- 
-  
-  console.log("GRID")
-  console.log(DP)
-  displayGrid();
-  //}
 
+  i = N;
+  }
+  displayGrid();
+}
+
+function knapSackBacktrack() {
   let itemsAdded = [];
   let capacity = maxCapacity;
-
-  for (let i = N; i > 0; i--) {
-    // console.log("nuværende obj " + DP[i][capacity]);
-    // console.log("forrige obj " + DP[i - 1][capacity]);
+  if (i > 0){
+    console.log("Backtrack:" + i)
     if (DP[i][capacity] != DP[i - 1][capacity]) {
       itemsAdded.push(valueArr[i - 1]);
       capacity = capacity - weightArr[i - 1];
     }
-    // hvis værdien er den samme som forrige 
-    // else if (DP[i][capacity] === DP[i - 1][capacity]) {
-    //   capacity = capacity
-    // }
+    i--;
   }
+  console.log(itemsAdded)
   return DP[N][maxCapacity];
 }
 
 function startGameInterval() {
   stopGameInterval()
   gameInterval = setInterval(() => {
-  knapSack();
+    if(gridIsFull == false){
+      knapSack();
+    } else {
+      knapSackBacktrack();
+    }
   }, 250)
+
 }
 
 function stopGameInterval() {
@@ -254,7 +231,6 @@ function stopKnapsackButton() {
   console.log("Clicked on Stop");
   stopGameInterval();
 }
-
 
 // function continueKnapsackButton() {
 //   console.log("Clicked on Stop");
