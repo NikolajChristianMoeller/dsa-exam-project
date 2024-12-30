@@ -13,6 +13,8 @@ let gridIsFull = false;
 
 let N = 0;
 let DP;
+// Tempoary global var
+let itemsAdded = [];
 
 const treasurePool = {
   1: { img: "crown", value: 10, weight: 1 },
@@ -52,7 +54,9 @@ function generateTreasures() {
 
   for (let i = 1; i <= N; i++) {
     const generateTreasure = Math.ceil(Math.random() * 11);
-    console.log("Generated number " + generateTreasure);
+
+    // --- Log tressure
+    //console.log("Generated number " + generateTreasure);
 
     picArr.push(treasurePool[generateTreasure].img);
     valueArr.push(treasurePool[generateTreasure].value);
@@ -86,6 +90,7 @@ function displayGrid() {
   }
 }
 
+// -- NB: der er element parameter for at funktionen virker
 function showArray(element, index) {
   const table = document.querySelector("#treasure-table-content");
   console.log(picArr[index]);
@@ -115,10 +120,6 @@ function init() {
   DP = createGrid();
   displayGrid();
   clearInterval(gameInterval);
-  // gameInterval = setInterval(() => {
-  //   bubbleSort(array);
-  //   renderArray();
-  // }, 2000);
 }
 
 function setUpEventListeners() {
@@ -141,8 +142,7 @@ function setStartValues() {
 }
 
 function setCapacity(event) {
-  stopGameInterval();
-  resetColAndRowValues();
+  resetApplicaition();
   maxCapacity = Number(event.target.value);
   console.log("C set to " + maxCapacity);
   DP = createGrid();
@@ -155,8 +155,7 @@ function resetColAndRowValues() {
 }
 
 function setTreasure(event) {
-  stopGameInterval();
-  resetColAndRowValues();
+  resetApplicaition();
   N = Number(event.target.value);
   console.log("Treasure set to " + N);
   generateTreasures();
@@ -172,17 +171,26 @@ function knapSack() {
     throw new Error("Invalid input: Check that weights and values");
   }
   if (i <= N + 1) {
+    // Vi kigger på i - 2 for at kompencere for de rows og cols der er til item - eller capacity nr. eller 0'værdier.
     let w = weightArr[i - 2];
     let v = valueArr[i - 2];
 
     if (c <= maxCapacity + 1) {
-      const capacity = c - 1;
+      /* STEP 1 ---------------------------------------------------------- */
       DP[i][c] = DP[i - 1][c];
+
+      // console.log("Set værdien til det ovenstående");
+      // console.log(` (Item ${i - 1} : Capacity ${c - 1}) Val = ` + DP[i][c]);
+
+      // Vi sætter capacity til at være c-1 for at tage højde for 'col' 0 som er reserveret til item værdierne.
+      const capacity = c - 1;
+      /* STEP  2 ---------------------------------------------------------- */
       if (capacity >= w && DP[i - 1][c - w] + v > DP[i][c]) {
         DP[i][c] = DP[i - 1][c - w] + v;
+        // console.log(
+        //   "Set værdien til itemets værdi - plus det det der ellers er plads til");
+        // console.log(` (Item ${i - 1} : Capacity ${c - 1}) Val = ` + DP[i][c]);
       }
-      console.log("nuværende celle" + DP[i][c]);
-
       c++;
     } else if (c > maxCapacity + 1) {
       i++;
@@ -197,43 +205,41 @@ function knapSack() {
   displayGrid();
 }
 
-/*
-Der er et issue med capacity.
-Når vores vægt blvier trukket fra, som sker når vi tilføjer et item, så skal vi kigge på en capacity der er 1 lavere end vi gør nu. 
-*/
-
-let itemsAdded = [];
 function knapSackBacktrack() {
-  // let capacity = maxCapacity;
-  if (i > 0) {
+  // Vi køre algoritmen så længe 'rows' er højere end 1 - da row 1 er reserveret til item '0'.
+  if (i > 1) {
     console.log("=================================================");
     console.log("Backtrack i:" + i);
     console.log("c : " + c);
     console.log(`DP[${i}][${c}] != DP[${i} - ${1}][${c}]`);
     console.log(`${DP[i][c]} != ${DP[i - 1][c]}`);
+
+    // Vi tjekker om cellen's værdi adskilder sig fra den ovenstående celles-
     if (DP[i][c] != DP[i - 1][c]) {
       console.log("*****************");
       console.log("add item");
       console.log("*****************");
       const itemNo = i - 1;
       itemsAdded.push(itemNo);
-      // Her bude vi kigge på capacity?
       console.log("adjusting weights");
       console.log(`c = ${c} - weightArr[${i} - 2]`);
       console.log(`c = ${c} - ${weightArr[i - 2]}`);
       console.log(weightArr);
       console.log("Whats the weightArr index: " + weightArr[i - 2]);
       console.log(c - weightArr[i - 2]);
+      // Juster capacity så det tager højde for at itemet ikke længere er i vores kanpsck
+      // Vi sætter 'c' til at være 'c' minus itemets vægt. Den finder vi på index plads [i -2] da vores grid har 2 'cols' mere end vores array har pladser.
       c = c - weightArr[i - 2];
     } else {
       console.log("*****************");
       console.log("item not added");
       console.log("*****************");
     }
+    // Vi rykker viddere til den ovenstående row.
     i--;
   } else {
     console.log("Stop!");
-    stopGameInterval();
+    resetApplicaition();
   }
   console.log(itemsAdded);
   return DP[N][maxCapacity];
@@ -251,7 +257,15 @@ function startGameInterval() {
 }
 
 function resetApplicaition() {
-  //
+  stopGameInterval();
+  resetColAndRowValues();
+  resetGridIsFull();
+  // reset Items added - tempoary solution
+  itemsAdded = [];
+}
+
+function resetGridIsFull() {
+  gridIsFull = false;
 }
 
 function stopGameInterval() {
