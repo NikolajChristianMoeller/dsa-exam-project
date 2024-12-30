@@ -125,15 +125,10 @@ function init() {
 function setUpEventListeners() {
   document.querySelector("#capacity").addEventListener("change", setCapacity);
   document.querySelector("#treasures").addEventListener("change", setTreasure);
-  document
-    .querySelector("#solve-button")
-    .addEventListener("click", solveKnapsackButton);
-  document
-    .querySelector("#reset-button")
-    .addEventListener("click", resetKnapsackButton);
-  document
-    .querySelector("#stop-button")
-    .addEventListener("click", stopKnapsackButton);
+  document.querySelector("#solve-button").addEventListener("click", solveKnapsackButton);
+  document.querySelector("#reset-button").addEventListener("click", resetKnapsackButton);
+  document.querySelector("#stop-button").addEventListener("click", stopKnapsackButton);
+  document.querySelector("#continue-button").addEventListener("click", continueKnapsackButton);
 }
 
 function setStartValues() {
@@ -288,9 +283,9 @@ function stopKnapsackButton() {
   stopGameInterval();
 }
 
-// function continueKnapsackButton() {
-//   console.log("Clicked on Stop");
-// }
+function continueKnapsackButton() {
+  console.log("Clicked on Continue");
+}
 
 function clearArrays() {
   picArr = [];

@@ -2,6 +2,7 @@
 /*#region TYPER */
 main {
     display: flex;
+    gap: 1em;
 }
 
 body {
@@ -18,12 +19,20 @@ h1 {
     color: #6e6;
 }
 
+h2 {
+    margin-top: 1px;
+    font-size: 15px;
+}
+
 select[type='number'] {
     font-family: 'Courier New', Courier, monospace;
+    display: flex;
     color: #6e6;
-    background-color: #5b5b5b;
+    background-color: #494343;
     text-align: right;
     width: 4em;
+    font-size: 12px;
+    
 }
 /*#endregion */
 
@@ -32,44 +41,45 @@ select[type='number'] {
 #left-container {
     width: 50%;
     display: flex;
-    padding: 10px;
-    gap: 10px;
+    padding: 5px;
+    gap: 5px;
     align-items: flex-start;
 }
 
 #right-container {
     width: 50%;
     display: flex;
-    padding: 10px;
+    padding: 5px;
     flex-direction: row;
     align-items: flex-start;
 }
 
-#info {
+#solver-info {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 10px;
+    font-size: 12px;
+    flex-grow: 1;
     color: #6e6;
     background-color: #5b5b5b;
     border: 1px solid black;
-    padding: 0.5em;
+    padding: 5px;
 }
 
 #chest-info {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 10px;
+    font-size: 12px;
     color: #6e6;
     background-color: #5b5b5b;
     border: 1px solid black;
-    padding: 0.5em;
+    padding: 5px;
 }
 
 #treasure-table-header {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 10px;
+    font-size: 12px;
     color: #6e6;
     background-color: #5b5b5b;
     border: 1px solid black;
-    padding: 0.5em;
+    padding: 5px;
 }
 
 #solve-button {
@@ -84,7 +94,7 @@ select[type='number'] {
     font-family: inherit;
     font-size: 12px;
     color: #6e6;
-    background-color: #d11212;
+    background-color: #cc850a;
     text-align: right;
 }
 
@@ -95,29 +105,50 @@ select[type='number'] {
     background-color: #d11212;
     text-align: right;
 }
+
+#continue-button {
+    font-family: inherit;
+    font-size: 12px;
+    color: #6e6;
+    background-color: #23873a;
+    text-align: right;
+}
 /*#endregion */
 
 /************************************ KLASSER **********************************/
 /*#region KLASSER */
-.grid-header {
-    display: grid;
+
+.solver-header {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 18px; /* Adjust as needed */
-    color: #6e6; /* Same as your other headers */
-    text-align: center;
-    margin-bottom: 10px; /* Add space between header and grid */
+    font-size: 15px;
+    color: #6e6;
+    margin-bottom: 5px; /* Space between header and grid */
+    text-align: left;
+}
+
+.grid-header {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    color: #6e6;
+    margin-bottom: 0.5em; /* Space between header and grid */
+    text-align: left;
+}
+
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align the header and grid to the left */
 }
 
 .grid {
     flex: 1;
+    border: 1px solid black;
     color: #6e6;
     display: grid;
-    min-width: 150px;
+    padding: 5px;
     min-width: 200px;
     grid-template-columns: repeat(var(--C), max-content);
     grid-template-rows: repeat(var(--N), max-content);
-    /* grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(7, 1fr); */
     gap: 1px;
     background-color: #5b5b5b;
     aspect-ratio: 7 / 5;
@@ -130,8 +161,8 @@ select[type='number'] {
     justify-content: center;
     align-items: center;
     border: 1px solid black;
-    min-width: 10px;
-    min-height: 10px;
+    min-width: 19px;
+    min-height: 19px;
 }
 
 .chest-img {
@@ -144,17 +175,5 @@ select[type='number'] {
 .treasure-img {
     width: 20px; /* Juster størrelse */
     height: auto;
-}
-
-@media (max-width: 768px) {
-    .grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 columns on small screens */
-        gap: 1px; /* Further reduce the gap between cells */
-    }
-
-    .cell {
-        font-size: 8px; /* Reduce font size for smaller screens */
-        padding: 2px; /* Further reduce cell padding */
-    }
 }
 /*#endregion */
