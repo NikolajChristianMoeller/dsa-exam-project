@@ -199,11 +199,22 @@ function knapSack() {
   displayGrid();
 }
 
+
+function removeClasses(number, prevNumber){
+  console.log("removeClasses kører")
+  number.classList.remove("currentCell")
+  prevNumber.classList.remove("previousCell");
+}
+
 function knapSackBacktrack() {
   // Vi køre algoritmen så længe 'rows' er højere end 1 - da row 1 er reserveret til item '0'.
   if (i > 1) {
+
     const number = document.getElementById(`DP${i}:${c}`)
     number.classList.add("currentCell")
+    const prevNumber = document.getElementById(`DP${i - 1}:${c}`);
+    prevNumber.classList.add("previousCell")
+    setTimeout(removeClasses, 1000, number, prevNumber)
     // Vi tjekker om cellen's værdi adskilder sig fra den ovenstående celles-
     if (DP[i][c] != DP[i - 1][c]) {
       const itemNo = i - 1;
@@ -229,7 +240,7 @@ function startGameInterval() {
     } else {
       knapSackBacktrack();
     }
-  }, 250);
+  }, 1000);
 }
 
 function resetApplicaition() {
