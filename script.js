@@ -125,10 +125,18 @@ function init() {
 function setUpEventListeners() {
   document.querySelector("#capacity").addEventListener("change", setCapacity);
   document.querySelector("#treasures").addEventListener("change", setTreasure);
-  document.querySelector("#solve-button").addEventListener("click", solveKnapsackButton);
-  document.querySelector("#reset-button").addEventListener("click", resetKnapsackButton);
-  document.querySelector("#stop-button").addEventListener("click", stopKnapsackButton);
-  document.querySelector("#continue-button").addEventListener("click", continueKnapsackButton);
+  document
+    .querySelector("#solve-button")
+    .addEventListener("click", solveKnapsackButton);
+  document
+    .querySelector("#reset-button")
+    .addEventListener("click", resetKnapsackButton);
+  document
+    .querySelector("#stop-button")
+    .addEventListener("click", stopKnapsackButton);
+  document
+    .querySelector("#continue-button")
+    .addEventListener("click", continueKnapsackButton);
 }
 
 function setStartValues() {
@@ -199,22 +207,29 @@ function knapSack() {
   displayGrid();
 }
 
+let id = 0;
 
-function removeClasses(number, prevNumber){
-  console.log("removeClasses kører")
-  number.classList.remove("currentCell")
+function removeClasses(number, prevNumber) {
+  clearTimeout(id);
+  console.log("removeClasses kører");
+  number.classList.remove("currentCell");
   prevNumber.classList.remove("previousCell");
 }
 
 function knapSackBacktrack() {
   // Vi køre algoritmen så længe 'rows' er højere end 1 - da row 1 er reserveret til item '0'.
   if (i > 1) {
-
-    const number = document.getElementById(`DP${i}:${c}`)
-    number.classList.add("currentCell")
+    const number = document.getElementById(`DP${i}:${c}`);
     const prevNumber = document.getElementById(`DP${i - 1}:${c}`);
-    prevNumber.classList.add("previousCell")
-    setTimeout(removeClasses, 1000, number, prevNumber)
+    number.classList.add("currentCell");
+    prevNumber.classList.add("previousCell");
+    //id = setTimeout(removeClasses, 1000, number, prevNumber)
+
+    id = setTimeout(() => {
+      number.classList.remove("currentCell");
+      prevNumber.classList.remove("previousCell");
+    }, 650);
+
     // Vi tjekker om cellen's værdi adskilder sig fra den ovenstående celles-
     if (DP[i][c] != DP[i - 1][c]) {
       const itemNo = i - 1;
@@ -222,7 +237,7 @@ function knapSackBacktrack() {
       // Juster capacity så det tager højde for at itemet ikke længere er i vores kanpsck
       // Vi sætter 'c' til at være 'c' minus itemets vægt. Den finder vi på index plads [i -2] da vores grid har 2 'cols' mere end vores array har pladser.
       c = c - weightArr[i - 2];
-    } 
+    }
     // Vi rykker viddere til den ovenstående row.
     i--;
   } else {
@@ -240,7 +255,7 @@ function startGameInterval() {
     } else {
       knapSackBacktrack();
     }
-  }, 1000);
+  }, 650);
 }
 
 function resetApplicaition() {
