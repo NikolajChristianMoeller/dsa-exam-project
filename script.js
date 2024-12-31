@@ -216,6 +216,8 @@ function knapSackBacktrack() {
     console.log(prevNumber)
     console.log("This is current number")
     console.log(number)
+
+    const leftNumber = document.getElementById(`DP${i - 1}:${c - weightArr[i - 2]}`);
     number.classList.add("currentCell");
     prevNumber.classList.add("previousCell");
     //id = setTimeout(removeClasses, 1000, number, prevNumber)
@@ -223,11 +225,13 @@ function knapSackBacktrack() {
     id = setTimeout(() => {
       number.classList.remove("currentCell");
       prevNumber.classList.remove("previousCell");
+      leftNumber.classList.remove("previousCell")
     }, 650);
 
     // Vi tjekker om cellen's værdi adskilder sig fra den ovenstående celles-
     if (DP[i][c] != DP[i - 1][c]) {
       const itemNo = i - 1;
+      leftNumber.classList.add("previousCell")
       itemsAdded.push(itemNo);
       // Juster capacity så det tager højde for at itemet ikke længere er i vores kanpsck
       // Vi sætter 'c' til at være 'c' minus itemets vægt. Den finder vi på index plads [i -2] da vores grid har 2 'cols' mere end vores array har pladser.
