@@ -162,7 +162,7 @@ function setStartValues() {
 }
 
 function setCapacity(event) {
-  resetApplicaition();
+  resetApplication();
   maxCapacity = Number(event.target.value);
   console.log("C set to " + maxCapacity);
   DP = createGrid();
@@ -175,7 +175,7 @@ function resetColAndRowValues() {
 }
 
 function setTreasure(event) {
-  resetApplicaition();
+  resetApplication();
   N = Number(event.target.value);
   console.log("Treasure set to " + N);
   generateTreasures();
@@ -268,7 +268,7 @@ function knapSackBacktrack() {
     // Vi rykker viddere til den ovenstående row.
     i--;
   } else {
-    resetApplicaition();
+    resetApplication();
   }
   console.log(itemsAdded);
   return DP[N][maxCapacity];
@@ -285,7 +285,7 @@ function startGameInterval() {
   }, 650);
 }
 
-function resetApplicaition() {
+function resetApplication() {
   stopGameInterval();
   resetColAndRowValues();
   resetGridIsFull();
