@@ -80,3 +80,33 @@ Step 1: Kig på den nuværende celle
 Step 2: Sammenlign den nuværende med den ovenstående
 Step 3: Hvis der er en forskel mellem dem, så vis den celle med den i det øvre row med den kol som har den resterende vægt.
 Step 4: Gå videre / gentag
+
+
+DP - Knapsack
+
+const 2Darr
+
+	for Obj af 2Darr
+		for vægt af Obj
+	ny værdi: (2Darr[O][V]) = Objektets værdi
+	gl værdi: = 2Darr[O - 1][V]
+	samlet værdi = 2D[O][V] + 2D[O - 1][V - Objektets værdi]
+		if (samlet værdi > gl. værdi)
+			ny værdi = samlet værdi
+		else
+			ny værdi = gl værdi
+
+Backtracking
+
+V = Max Vægt
+O = Sidste Objekt
+
+	While O > 0
+
+	if  2DArr[O][V]  != 2DArr[O - 1][V]
+	{ 
+		“Indkluder objektet i tasken” 
+
+	V = V - Objekt.Vægt 
+	}
+	O = O - 1
