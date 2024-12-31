@@ -89,7 +89,6 @@ function displayGrid() {
     }
   }
 }
-
 // -- NB: der er element parameter for at funktionen virker
 function showArray(element, index) {
   const table = document.querySelector("#treasure-table-content");
@@ -125,18 +124,10 @@ function init() {
 function setUpEventListeners() {
   document.querySelector("#capacity").addEventListener("change", setCapacity);
   document.querySelector("#treasures").addEventListener("change", setTreasure);
-  document
-    .querySelector("#solve-button")
-    .addEventListener("click", solveKnapsackButton);
-  document
-    .querySelector("#reset-button")
-    .addEventListener("click", resetKnapsackButton);
-  document
-    .querySelector("#stop-button")
-    .addEventListener("click", stopKnapsackButton);
-  document
-    .querySelector("#continue-button")
-    .addEventListener("click", continueKnapsackButton);
+  document.querySelector("#solve-button").addEventListener("click", solveKnapsackButton);
+  document.querySelector("#reset-button").addEventListener("click", resetKnapsackButton);
+  document.querySelector("#stop-button").addEventListener("click", stopKnapsackButton);
+  document.querySelector("#continue-button").addEventListener("click", continueKnapsackButton);
 }
 
 function setStartValues() {
@@ -221,6 +212,10 @@ function knapSackBacktrack() {
   if (i > 1) {
     const number = document.getElementById(`DP${i}:${c}`);
     const prevNumber = document.getElementById(`DP${i - 1}:${c}`);
+    console.log("This is previous number")
+    console.log(prevNumber)
+    console.log("This is current number")
+    console.log(number)
     number.classList.add("currentCell");
     prevNumber.classList.add("previousCell");
     //id = setTimeout(removeClasses, 1000, number, prevNumber)
@@ -277,8 +272,8 @@ function stopGameInterval() {
 function solveKnapsackButton() {
   console.log("Clicked on Solve");
   startGameInterval();
-  knapSack();
   displayGrid();
+  
 }
 
 function resetKnapsackButton() {
@@ -288,6 +283,7 @@ function resetKnapsackButton() {
 function stopKnapsackButton() {
   console.log("Clicked on Stop");
   stopGameInterval();
+  clearTimeout(id)
 }
 
 function continueKnapsackButton() {
