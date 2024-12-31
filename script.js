@@ -36,7 +36,9 @@ function createGrid() {
     const row = [];
     grid.push(row);
     for (let j = 0; j <= maxCapacity + 1; j++) {
-      if (i === 0 && j > 1) {
+      if (i === 0 && j === 0) {
+        row.push(" ");
+      } else if (i === 0 && j > 1) {
         row.push(j - 1);
       } else if (j === 0 && i > 1) {
         row.push(i - 1);
@@ -85,10 +87,26 @@ function displayGrid() {
             <div id="DP${row}:${col}" class="cell">
             ${cellValue}
             </div>`;
+
       grid.insertAdjacentHTML("beforeend", cell);
+      colorizeCellHeaders(row, col);
     }
   }
 }
+
+function colorizeCellHeaders(row, col) {
+  const cell = document.getElementById(`DP${row}:${col}`);
+  if (row === 0 && col == 0) {
+    cell.classList.remove("cell");
+  } else if (row === 0 && col > 0) {
+    cell.classList.add("capacityHeader");
+    console.log("a");
+  } else if (row > 0 && col === 0) {
+    cell.classList.add("itemHeader");
+    console.log("b");
+  }
+}
+
 // -- NB: der er element parameter for at funktionen virker
 function showArray(element, index) {
   const table = document.querySelector("#treasure-table-content");
@@ -124,10 +142,18 @@ function init() {
 function setUpEventListeners() {
   document.querySelector("#capacity").addEventListener("change", setCapacity);
   document.querySelector("#treasures").addEventListener("change", setTreasure);
-  document.querySelector("#solve-button").addEventListener("click", solveKnapsackButton);
-  document.querySelector("#reset-button").addEventListener("click", resetKnapsackButton);
-  document.querySelector("#stop-button").addEventListener("click", stopKnapsackButton);
-  document.querySelector("#continue-button").addEventListener("click", continueKnapsackButton);
+  document
+    .querySelector("#solve-button")
+    .addEventListener("click", solveKnapsackButton);
+  document
+    .querySelector("#reset-button")
+    .addEventListener("click", resetKnapsackButton);
+  document
+    .querySelector("#stop-button")
+    .addEventListener("click", stopKnapsackButton);
+  document
+    .querySelector("#continue-button")
+    .addEventListener("click", continueKnapsackButton);
 }
 
 function setStartValues() {
@@ -212,12 +238,14 @@ function knapSackBacktrack() {
   if (i > 1) {
     const number = document.getElementById(`DP${i}:${c}`);
     const prevNumber = document.getElementById(`DP${i - 1}:${c}`);
-    console.log("This is previous number")
-    console.log(prevNumber)
-    console.log("This is current number")
-    console.log(number)
+    console.log("This is previous number");
+    console.log(prevNumber);
+    console.log("This is current number");
+    console.log(number);
 
-    const leftNumber = document.getElementById(`DP${i - 1}:${c - weightArr[i - 2]}`);
+    const leftNumber = document.getElementById(
+      `DP${i - 1}:${c - weightArr[i - 2]}`
+    );
     number.classList.add("currentCell");
     prevNumber.classList.add("previousCell");
     //id = setTimeout(removeClasses, 1000, number, prevNumber)
@@ -225,13 +253,13 @@ function knapSackBacktrack() {
     id = setTimeout(() => {
       number.classList.remove("currentCell");
       prevNumber.classList.remove("previousCell");
-      leftNumber.classList.remove("previousCell")
+      leftNumber.classList.remove("previousCell");
     }, 650);
 
     // Vi tjekker om cellen's værdi adskilder sig fra den ovenstående celles-
     if (DP[i][c] != DP[i - 1][c]) {
       const itemNo = i - 1;
-      leftNumber.classList.add("previousCell")
+      leftNumber.classList.add("previousCell");
       itemsAdded.push(itemNo);
       // Juster capacity så det tager højde for at itemet ikke længere er i vores kanpsck
       // Vi sætter 'c' til at være 'c' minus itemets vægt. Den finder vi på index plads [i -2] da vores grid har 2 'cols' mere end vores array har pladser.
@@ -277,7 +305,6 @@ function solveKnapsackButton() {
   console.log("Clicked on Solve");
   startGameInterval();
   displayGrid();
-  
 }
 
 function resetKnapsackButton() {
@@ -287,7 +314,7 @@ function resetKnapsackButton() {
 function stopKnapsackButton() {
   console.log("Clicked on Stop");
   stopGameInterval();
-  clearTimeout(id)
+  clearTimeout(id);
 }
 
 function continueKnapsackButton() {
