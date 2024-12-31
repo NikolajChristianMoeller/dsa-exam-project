@@ -82,7 +82,7 @@ function displayGrid() {
     for (let col = 0; col < maxCapacity + 2; col++) {
       const cellValue = DP[row][col];
       const cell = /*html*/ `
-            <div class="cell">
+            <div id="DP${row}:${col}" class="cell">
             ${cellValue}
             </div>`;
       grid.insertAdjacentHTML("beforeend", cell);
@@ -193,7 +193,6 @@ function knapSack() {
     }
   } else if (i > N + 1) {
     gridIsFull = true;
-
     i = N + 1;
     c = maxCapacity + 1;
   }
@@ -203,37 +202,19 @@ function knapSack() {
 function knapSackBacktrack() {
   // Vi køre algoritmen så længe 'rows' er højere end 1 - da row 1 er reserveret til item '0'.
   if (i > 1) {
-    console.log("=================================================");
-    console.log("Backtrack i:" + i);
-    console.log("c : " + c);
-    console.log(`DP[${i}][${c}] != DP[${i} - ${1}][${c}]`);
-    console.log(`${DP[i][c]} != ${DP[i - 1][c]}`);
-
+    const number = document.getElementById(`DP${i}:${c}`)
+    number.classList.add("currentCell")
     // Vi tjekker om cellen's værdi adskilder sig fra den ovenstående celles-
     if (DP[i][c] != DP[i - 1][c]) {
-      console.log("*****************");
-      console.log("add item");
-      console.log("*****************");
       const itemNo = i - 1;
       itemsAdded.push(itemNo);
-      console.log("adjusting weights");
-      console.log(`c = ${c} - weightArr[${i} - 2]`);
-      console.log(`c = ${c} - ${weightArr[i - 2]}`);
-      console.log(weightArr);
-      console.log("Whats the weightArr index: " + weightArr[i - 2]);
-      console.log(c - weightArr[i - 2]);
       // Juster capacity så det tager højde for at itemet ikke længere er i vores kanpsck
       // Vi sætter 'c' til at være 'c' minus itemets vægt. Den finder vi på index plads [i -2] da vores grid har 2 'cols' mere end vores array har pladser.
       c = c - weightArr[i - 2];
-    } else {
-      console.log("*****************");
-      console.log("item not added");
-      console.log("*****************");
-    }
+    } 
     // Vi rykker viddere til den ovenstående row.
     i--;
   } else {
-    console.log("Stop!");
     resetApplicaition();
   }
   console.log(itemsAdded);

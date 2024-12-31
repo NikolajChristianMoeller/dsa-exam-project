@@ -165,6 +165,16 @@ select[type='number'] {
     min-height: 19px;
 }
 
+.currentCell {
+background-color: aqua;
+color: black;
+}
+
+.previousCell {
+background-color: #d11212;
+color: black;
+}
+
 .chest-img {
     height: 50%;
     width: 50%;
