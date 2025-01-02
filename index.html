@@ -45,33 +45,28 @@
                 </div>
             </nav>
             <h1>0/1 Knapsack Problem | Dynamic Programming</h1>
-            <div id="left-container">
+            <div id="main-container">
                 <div class="grid-container">
-                    <h2 class="grid-header">2D Grid</h2>
+                    <!-- <h2 class="grid-header">2D Grid</h2> -->
                     <div class="grid"></div>
                 </div>
-            </div>
-            <div id="right-container">
-                <div id="chest-info">
-                    <h2>Chest</h2>
-                    <label for="capacity">Current Capacity 0 kg</label>
-                    <br />
-                    <label for="weights">Current Weight 0 kg</label>
-                    <br />
-                    <label for="values">Current Value 0 kr</label>
+
+                <div id="chest-img">
+                    <img src="./public/chest.png" alt="Chest" class="chest-img" />
                 </div>
-                <img src="./public/chest.png" alt="Chest" class="chest-img" />
-                <table id="treasure-table-header">
-                    <thead>
-                        <tr>
-                            <th>Number</th>
-                            <th>Pic</th>
-                            <th>Weight</th>
-                            <th>Value</th>
-                        </tr>
-                    </thead>
-                    <tbody id="treasure-table-content"></tbody>
-                </table>
+                <div id="table">
+                    <table id="treasure-table-header">
+                        <thead>
+                            <tr>
+                                <th>Number</th>
+                                <th>Pic</th>
+                                <th>Weight</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="treasure-table-content"></tbody>
+                    </table>
+                </div>
             </div>
         </section>
         <script type="module" src="script.js"></script>

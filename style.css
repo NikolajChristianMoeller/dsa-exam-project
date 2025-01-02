@@ -57,21 +57,21 @@ button {
 
 /************************************* ID'ER ***********************************/
 /*#region ID'ER */
-#left-container {
+/* #left-container {
     width: 50%;
     display: flex;
     padding: 5px;
     gap: 5px;
     align-items: flex-start;
-}
+} */
 
-#right-container {
+/* #right-container {
     width: 50%;
     display: flex;
     padding: 5px;
     flex-direction: row;
     align-items: flex-start;
-}
+} */
 
 #navbar-container {
     display: flex;
@@ -97,13 +97,23 @@ button {
     align-items: center;
 }
 
-#chest-info {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 12px;
-    color: #6e6;
-    background-color: #5b5b5b;
-    border: 1px solid black;
-    padding: 5px;
+#main-container {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 2fr 1fr;
+}
+
+#table {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    grid-row: 1/-1;
+    grid-column: 2;
+    background-color: #cc850a;
+}
+
+#chest-img {
+    background-color: blueviolet;
 }
 
 #treasure-table-header {
@@ -169,24 +179,24 @@ button {
     text-align: left;
 }
 
-.grid-container {
+/* .grid-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-}
+} */
 
 .grid {
-    flex: 1;
-    border: 1px solid black;
-    color: #6e6;
     display: grid;
+    color: #6e6;
     padding: 5px;
     min-width: 200px;
     grid-template-columns: repeat(var(--C), max-content);
     grid-template-rows: repeat(var(--N), max-content);
+    grid-row: 1;
+    grid-column: 1;
     gap: 1px;
-    background-color: #5b5b5b;
-    aspect-ratio: 7 / 5;
+    background-color: rgba(69, 62, 53, 0.917);
+    /* aspect-ratio: 7 / 5; */
 }
 
 .cell {
