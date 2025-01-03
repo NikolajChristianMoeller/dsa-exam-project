@@ -39,4 +39,4 @@ Vi anvender en 2D-array (dp) til at gemme mellemresultater.
 
 4. Åbn en browser
    
-   http://127.0.0.1:5501/
+   http://127.0.0.1:5500/
