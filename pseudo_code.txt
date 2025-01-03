@@ -18,7 +18,8 @@ for (hver objekt fra 1 til N) {
 	gemmer værdi og vægt for nuværende objekt					
 	for (hver kapacitet fra 1 til C) {
 		Sæt nuværende værdi til forrige værdi i samme kolonne.
-		if(nuværende kapacitet >= nuværende vægt og forrige objekts værdi + nuværende værdi > nuværende objekts værdi) {
+		if(nuværende kapacitet >= nuværende vægt og 
+		forrige objekts værdi + nuværende værdi > nuværende objekts værdi) {
 		sæt nuværende celles værdi = forrige objekts værdi + nuværende objekts værdi
 		}
 	}
