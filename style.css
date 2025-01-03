@@ -58,6 +58,11 @@ button {
 
 th {
     padding: 10px;
+    color: orange;
+}
+
+td {
+    text-align: center;
 }
 
 /*#endregion */
@@ -211,7 +216,6 @@ th {
 .grid {
     display: grid;
     color: #6e6;
-    padding: 5px;
     min-width: 200px;
     grid-template-columns: repeat(var(--C), max-content);
     grid-template-rows: repeat(var(--N), max-content);
@@ -247,13 +251,11 @@ th {
 }
 
 .currentCell {
-    background-color: aqua;
-    color: black;
+    color: rgb(73 108 223)
 }
 
 .previousCell {
-    background-color: #d11212;
-    color: black;
+    color: rgb(187, 55, 55);
 }
 
 .chest-img {
@@ -268,4 +270,18 @@ th {
     height: 45px;
     object-fit: contain;
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
 /*#endregion */

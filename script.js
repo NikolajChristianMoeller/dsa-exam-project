@@ -254,7 +254,7 @@ function knapSackBacktrack() {
       number.classList.remove("currentCell");
       prevNumber.classList.remove("previousCell");
       leftNumber.classList.remove("previousCell");
-    }, 650);
+    }, 500);
 
     // Vi tjekker om cellen's værdi adskilder sig fra den ovenstående celles-
     if (DP[i][c] != DP[i - 1][c]) {
@@ -282,7 +282,7 @@ function startGameInterval() {
     } else {
       knapSackBacktrack();
     }
-  }, 650);
+  }, 500);
 }
 
 function resetApplication() {
