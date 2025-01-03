@@ -267,7 +267,8 @@ th {
 }
 
 .treasure-img {
-    width: 40px;
-    height: auto;
+    width: 60px;
+    height: 45px;
+    object-fit: contain;
 }
 /*#endregion */
