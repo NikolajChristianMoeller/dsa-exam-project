@@ -1,7 +1,7 @@
 # Data Structures and Algorithms Exam Project
 ## - The 0/1 Knapsack Problem | Dynamic Programming
 
-<img src="https://github.com/user-attachments/assets/8c7c7cfe-9302-4ef1-9c57-88d3c3ad6087" width="500"/>
+![Visualization](public/visualization.png)
 
 ## Kort beskrivelse
 
