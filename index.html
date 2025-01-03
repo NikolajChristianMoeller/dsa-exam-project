@@ -1,130 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="#" type="image/x-icon">
-    <link rel="icon" type="image/svg+xml" href="./knapsack.png"/>
-    <link rel="stylesheet" href="style.css">
-    <title>Knapsack Problem</title>
-</head>
-<body>
-    <h1>0/1 Knapsack Problem | Dynamic Programming</h1>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="#" type="image/x-icon" />
+        <link rel="icon" type="image/svg+xml" href="./knapsack.png" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Knapsack Problem</title>
+    </head>
+    <body>
         <section>
-            <main>
-                <div id="left-container">
-                    <div id="solver-info">
-                        <h2 class="solver-header">Solver</h2>
-                            <label for="capacity">Capacity (kg)</label>
-                                <select type="number" id="capacity">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                            </select>
-                            <label for="value">Treasures</label>
-                            <select type="number" id="treasures">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                            </select>
-                        <button id="solve-button">Solve</button>
-                        <button id="reset-button">Reset</button>
-                        <button id="stop-button">Stop</button>
-                        <button id="continue-button">Continue</button>
+            <nav id="navbar-container">
+                <div id="nav-btns">
+                    <button id="solve-button">Solve</button>
+                    <button id="stop-button">Stop</button>
+                    <button id="reset-button">Reset</button>
+                    <button id="continue-button">Continue</button>
+                </div>
+                <div id="nav-selectors">
+                    <div class="dropdown">
+                        <label for="capacity">Capacity</label>
+                        <select type="number" id="capacity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                        </select>
                     </div>
-                    <div class="grid-container">
-                        <h2 class="grid-header">2D Grid</h2>
-                            <div class="grid">
-                            <!-- <div class="cell"></div>
-                            <div class="cell">0</div>
-                            <div class="cell">1</div>
-                            <div class="cell">2</div>
-                            <div class="cell">3</div>
-                            <div class="cell">4</div>
-                            <div class="cell">5</div>
-                            <div class="cell">6</div>
-                            <div class="cell">7</div>
-                        
-                            <div class="cell">1</div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                        
-                            <div class="cell">2</div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-
-                            <div class="cell">3</div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-
-                            <div class="cell">4</div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-
-                            <div class="cell">5</div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-
-                            <div class="cell">6</div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div>
-                            <div class="cell"></div> -->
-                            </div>
+                    <div class="dropdown">
+                        <label for="value">Treasures</label>
+                        <select type="number" id="treasures">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                        </select>
                     </div>
                 </div>
-                <div id="right-container">
-                    <div id="chest-info">
-                        <h2>Chest</h2>
-                        <label for="capacity">Current Capacity 0 kg</label>
-                        <br>
-                        <label for="weights">Current Weight 0 kg</label>
-                        <br>
-                        <label for="values">Current Value 0 kr</label>
-                    </div>
-                    <img src="./public/chest.png" alt="Chest" class="chest-img">
+            </nav>
+            <h1>0/1 Knapsack Problem | Dynamic Programming</h1>
+            <div id="main-container">
+                <div class="grid-container">
+                    <!-- <h2 class="grid-header">2D Grid</h2> -->
+                    <div class="grid"></div>
+                </div>
+
+                <div id="chest-img">
+                    <img src="./public/chest.png" alt="Chest" class="chest-img" />
+                </div>
+                <div id="table">
                     <table id="treasure-table-header">
                         <thead>
                             <tr>
@@ -134,12 +64,11 @@
                                 <th>Value</th>
                             </tr>
                         </thead>
-                        <tbody id="treasure-table-content">
-					</tbody>
+                        <tbody id="treasure-table-content"></tbody>
                     </table>
                 </div>
-            </main>
+            </div>
         </section>
-<script type="module" src="script.js"></script>
-</body>
+        <script type="module" src="script.js"></script>
+    </body>
 </html>
