@@ -8,7 +8,7 @@
 }
 
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Fira Code', monospace;
     color: black;
     background-color: #666;
     background-size: cover;
@@ -18,7 +18,7 @@ body {
 h1 {
     display: flex;
     justify-content: center;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Fira Code', monospace;
     font-size: 25px;
     color: #6e6;
     padding-top: 30px;
@@ -32,11 +32,11 @@ h2 {
 
 select[type='number'] {
     display: flex;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Fira Code', monospace;
     background-color: #494343;
     color: #6e6;
     text-align: right;
-    width: 100px;
+    width: 41px;
     font-size: 12px;
     padding: 6px;
 }
@@ -86,8 +86,7 @@ th {
     background-color: #d11212;
     background-color: #453e35ea;
     border: solid 1px black;
-
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Fira Code', monospace;
     font-size: 12px;
     height: 70px;
     padding: 5px;
@@ -136,15 +135,14 @@ th {
 }
 
 #treasure-table-header {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Fira Code', monospace;
     font-size: 20px;
     color: #6e6;
     background-color: #453e35ea;
-    border: 2px solid black;
+    border: 1px solid black;
     padding: 5px;
     min-height: 100px;
     max-height: 100%;
-
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -183,7 +181,7 @@ th {
 /*#region KLASSER */
 
 .solver-header {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Fira Code', monospace;
     font-size: 15px;
     color: #6e6;
     margin-bottom: 5px;
@@ -197,7 +195,7 @@ th {
     margin-left: 10px;
 }
 .grid-header {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Fira Code', monospace;
     font-size: 15px;
     color: #6e6;
     margin-bottom: 0.5em;
@@ -228,8 +226,7 @@ th {
 
 .cell {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Fira Code', monospace;
     background-color: #453e35ea;
     font-size: 24px;
     font-weight: 600;
