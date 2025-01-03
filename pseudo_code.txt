@@ -65,21 +65,9 @@ Returner itemsAdded eller den samlede værdi DP[N][C]
 
 
 
- knapsack(Capacity, Weight, Value)
+knapsack(Capacity, Weight, Value)
 
 
-
-
-
-## Udfyldning af grid (fremadrettet)
-a. Kig på nuværende celle (illustrer at vi kigger på nuværende celle) + farven skifter
-b. Udfyld nuværende celle med den rigtige værdi (farven kunne evt. opdateres hvis værdien ændres)
-
-## Backudrettet backtracking af grid
-Step 1: Kig på den nuværende celle
-Step 2: Sammenlign den nuværende med den ovenstående
-Step 3: Hvis der er en forskel mellem dem, så vis den celle med den i det øvre row med den kol som har den resterende vægt.
-Step 4: Gå videre / gentag
 
 
 DP - Knapsack
