@@ -83,10 +83,14 @@ th {
     display: flex;
     justify-content: center;
     background-color: #d11212;
+    background-color: #453e35ea;
+    border: solid 1px black;
+
     font-family: 'Courier New', Courier, monospace;
     font-size: 12px;
     height: 70px;
     padding: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #nav-selectors {
@@ -139,6 +143,8 @@ th {
     padding: 5px;
     min-height: 100px;
     max-height: 100%;
+
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #solve-button {
@@ -220,6 +226,8 @@ th {
 }
 
 .cell {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
     font-family: 'Courier New', Courier, monospace;
     background-color: #453e35ea;
     font-size: 24px;
