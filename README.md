@@ -17,11 +17,11 @@ Vi har valgt at implementere Dynamic Programming-tilgangen, som er effektiv til 
 
 I stedet for at teste alle mulige kombinationer beregner vi løsninger til mindre delproblemer og genbruger resultaterne.
 
-Vi anvender en 2D-array (dp) til at gemme mellemresultater.
+Vi anvender en 2D-array (DP) til at gemme mellemresultater.
 
-**Dimensioner:** _dp[i][w]_, hvor _i_ er antallet af genstande, og _w_ er taskens kapacitet.
+**Dimensioner:** _DP[i][w]_, hvor _i_ er antallet af genstande, og _w_ er taskens kapacitet.
 
-**Indhold:** Hver celle indeholder den maksimale værdi, der kan opnås med kapaciteten w ved brug af de første i genstande.
+**Indhold:** Hver celle indeholder den maksimale værdi, der kan opnås med kapaciteten _w_ ved brug af de første _i_ genstande.
 
 ## Sådan kører du applikationen på din lokale maskine
 
