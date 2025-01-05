@@ -215,7 +215,6 @@ function knapSackBacktrack() {
       prevNumber.classList.remove("previousCell");
       leftNumber.classList.remove("previousCell");
     }, 500);
-
     // Vi tjekker om cellen's værdi adskilder sig fra den ovenstående celles-
     if (DP[i][c] != DP[i - 1][c]) {
       const itemNo = i - 1;
