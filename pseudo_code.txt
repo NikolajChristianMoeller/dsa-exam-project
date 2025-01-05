@@ -1,100 +1,39 @@
+1. (INITIALISERINGEN)
 
-(INITIALISERINGEN)
-1. Argumenter for forståelse:
-   W[] = array af vægte
-   V[] = array af værdier
-   C = den maximale kapacitet tasken kan holde
-   
+Argumenter for forståelse
+W[] = array af vægte weightArr
+V[] = array af værdier valueArr
+C = den maximale kapacitet tasken kan holde maxCapacity
 
-knapsack(C, W, V) {
+knapsack() {
 
-    Tjek at W, V og C >= 0
-    Tjek at W.length == V.length	// er det fordi at vi er nød til at parre vægten og valuen så vi ved de passer sammen?
+Definer antal objekter 
+N = W.length 					
 
+Definér gridet
+DP[][] = [N][C]	
 
-2. Definer antal objekter 
-	 N = W.length 					// er stort N altid antal objekter? og hvorfor W.length?
-
-3. Definér gridet:
-   DP[][] = [W.length + 1][C + 1]	// skal det ikke være Capacity og item?
-
-
-(UDFYLD GRIDET)
+2. (UDFYLD GRIDET)
 for (hver objekt fra 1 til N) {
-	w = W[i-1]						// skal det ikke være i+1? eller er det fordi der hvor vi er, er altid i-1 fordi...
-	v = V[i-1]						// ... i+1 er det næste trin i rækken?
-
-	for (hver kapacitet fra 1 til C)  {
-	
+	gemmer værdi og vægt for nuværende objekt					
+	for (hver kapacitet fra 1 til C) {
 		Sæt nuværende værdi til forrige værdi i samme kolonne.
-		DP[i][sz] = DP[i-1][sz]
-		
-		Hvis nuværende capacity er større eller ligmed vores nuværende objekts vægt, 
-		og det forrige objekts værdi + nuværende objekts værdi, er større end den nuværende objekts værdi,
-		sæt værdien af nuværende celle til at indeholde det det forrige objekts værdi + nuværende objekts værdi.
-
-		if(sz >= w && DP[i-1][sz - nuværrende vægt] + nuværende værdi  > DP[i][sz]) {
-			sæt DP[i][sz] = DP[i-1][sz-w] +v
+		if(nuværende kapacitet >= nuværende vægt og 
+		forrige objekts værdi + nuværende værdi > nuværende objekts værdi) {
+		sæt nuværende celles værdi = forrige objekts værdi + nuværende objekts værdi
 		}
-	
-	  }
 	}
+}
 
-
-(BACKTRACKING FOR AT FINDE VALGTE OBJEKTER)
-let itemsAdded = []
+3. (BACKTRACKING FOR AT FINDE VALGTE OBJEKTER)
+ itemsAddedArr = []
 
 	iterer fra sidste objekt til første objekt {
-		hvis nuværende objekts værdi ikke er ligmed forrige objekts værdi {
-			så ved vi at nuværende objekt er tilføjet
-			Fjern objektets vægt W[i] fra taskens capacitet C
-		}
-		returner itemsAdded arrayet
-	}
-
-
-for (let i = antal objekter; i> 0; i--) {
-if(DP[i][sz] != DP[i-1][sz]){
+		if(nuværende objekts værdi ikke er ligmed forrige objekts værdi)  {
 		gem/tilføj objektet(i) i itemsAdded tasken
-		Fjern objektets vægt W[i] fra taskens capacitet C
+		Fjern objektets vægt fra C
+		}
+		returner itemsAddedArr 
 	}
+	Returner itemsAddedArr 
 }
-
-Returner itemsAdded eller den samlede værdi DP[N][C]
-}
-
-
-
-knapsack(Capacity, Weight, Value)
-
-
-
-
-DP - Knapsack
-
-const 2Darr
-
-	for Obj af 2Darr
-		for vægt af Obj
-	ny værdi: (2Darr[O][V]) = Objektets værdi
-	gl værdi: = 2Darr[O - 1][V]
-	samlet værdi = 2D[O][V] + 2D[O - 1][V - Objektets værdi]
-		if (samlet værdi > gl. værdi)
-			ny værdi = samlet værdi
-		else
-			ny værdi = gl værdi
-
-Backtracking
-
-V = Max Vægt
-O = Sidste Objekt
-
-	While O > 0
-
-	if  2DArr[O][V]  != 2DArr[O - 1][V]
-	{ 
-		“Indkluder objektet i tasken” 
-
-	V = V - Objekt.Vægt 
-	}
-	O = O - 1
