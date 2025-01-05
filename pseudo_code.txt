@@ -37,36 +37,3 @@ for (hver objekt fra 1 til N) {
 	}
 	Returner itemsAddedArr 
 }
-
-
-
-
-
-DP - Knapsack
-
-const 2Darr
-
-	for Obj af 2Darr
-		for vægt af Obj
-	ny værdi: (2Darr[O][V]) = Objektets værdi
-	gl værdi: = 2Darr[O - 1][V]
-	samlet værdi = 2D[O][V] + 2D[O - 1][V - Objektets værdi]
-		if (samlet værdi > gl. værdi)
-			ny værdi = samlet værdi
-		else
-			ny værdi = gl værdi
-
-Backtracking
-
-V = Max Vægt
-O = Sidste Objekt
-
-	While O > 0
-
-	if  2DArr[O][V]  != 2DArr[O - 1][V]
-	{ 
-		“Indkluder objektet i tasken” 
-
-	V = V - Objekt.Vægt 
-	}
-	O = O - 1
