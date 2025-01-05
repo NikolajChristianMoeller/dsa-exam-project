@@ -10,10 +10,8 @@ let maxCapacity = 0;
 let i = 2;
 let c = 2;
 let gridIsFull = false;
-
 let N = 0;
 let DP;
-// Tempoary global var
 let itemsAdded = [];
 
 const treasurePool = {
@@ -47,7 +45,6 @@ function createGrid() {
       }
     }
   }
-  console.log(grid);
   return grid;
 }
 
@@ -56,15 +53,10 @@ function generateTreasures() {
 
   for (let i = 1; i <= N; i++) {
     const generateTreasure = Math.ceil(Math.random() * 11);
-
-    // --- Log tressure
-    //console.log("Generated number " + generateTreasure);
-
     picArr.push(treasurePool[generateTreasure].img);
     valueArr.push(treasurePool[generateTreasure].value);
     weightArr.push(treasurePool[generateTreasure].weight);
   }
-
   clearTreasureTable();
   picArr.forEach(showArray);
   DP = createGrid();
@@ -79,7 +71,6 @@ function displayGrid() {
   grid.innerHTML = "";
   grid.style.setProperty("--C", maxCapacity + 2);
   grid.style.setProperty("--N", N + 2);
-
   for (let row = 0; row < N + 2; row++) {
     for (let col = 0; col < maxCapacity + 2; col++) {
       const cellValue = DP[row][col];
@@ -87,7 +78,6 @@ function displayGrid() {
             <div id="DP${row}:${col}" class="cell">
             ${cellValue}
             </div>`;
-
       grid.insertAdjacentHTML("beforeend", cell);
       colorizeCellHeaders(row, col);
     }
@@ -100,19 +90,14 @@ function colorizeCellHeaders(row, col) {
     cell.classList.remove("cell");
   } else if (row === 0 && col > 0) {
     cell.classList.add("capacityHeader");
-    console.log("a");
   } else if (row > 0 && col === 0) {
     cell.classList.add("itemHeader");
-    console.log("b");
   }
 }
 
-// -- NB: der er element parameter for at funktionen virker
 function showArray(element, index) {
   const table = document.querySelector("#treasure-table-content");
-  console.log(picArr[index]);
   const imgPath = `./public/treasures/${picArr[index]}.svg`;
-
   const html = /*html*/ `
             <tr> 
                 <td>${index + 1}</td>
@@ -142,18 +127,8 @@ function init() {
 function setUpEventListeners() {
   document.querySelector("#capacity").addEventListener("change", setCapacity);
   document.querySelector("#treasures").addEventListener("change", setTreasure);
-  document
-    .querySelector("#solve-button")
-    .addEventListener("click", solveKnapsackButton);
-  document
-    .querySelector("#reset-button")
-    .addEventListener("click", resetKnapsackButton);
-  document
-    .querySelector("#stop-button")
-    .addEventListener("click", stopKnapsackButton);
-  document
-    .querySelector("#continue-button")
-    .addEventListener("click", continueKnapsackButton);
+  document.querySelector("#solve-button").addEventListener("click", solveKnapsackButton);
+  document.querySelector("#stop-button").addEventListener("click", stopKnapsackButton);
 }
 
 function setStartValues() {
@@ -164,7 +139,6 @@ function setStartValues() {
 function setCapacity(event) {
   resetApplication();
   maxCapacity = Number(event.target.value);
-  console.log("C set to " + maxCapacity);
   DP = createGrid();
   displayGrid();
 }
@@ -177,7 +151,6 @@ function resetColAndRowValues() {
 function setTreasure(event) {
   resetApplication();
   N = Number(event.target.value);
-  console.log("Treasure set to " + N);
   generateTreasures();
 }
 
@@ -199,17 +172,12 @@ function knapSack() {
       /* STEP 1 ---------------------------------------------------------- */
       DP[i][c] = DP[i - 1][c];
 
-      // console.log("Set værdien til det ovenstående");
-      // console.log(` (Item ${i - 1} : Capacity ${c - 1}) Val = ` + DP[i][c]);
-
       // Vi sætter capacity til at være c-1 for at tage højde for 'col' 0 som er reserveret til item værdierne.
       const capacity = c - 1;
       /* STEP  2 ---------------------------------------------------------- */
       if (capacity >= w && DP[i - 1][c - w] + v > DP[i][c]) {
         DP[i][c] = DP[i - 1][c - w] + v;
-        // console.log(
         //   "Set værdien til itemets værdi - plus det det der ellers er plads til");
-        // console.log(` (Item ${i - 1} : Capacity ${c - 1}) Val = ` + DP[i][c]);
       }
       c++;
     } else if (c > maxCapacity + 1) {
@@ -228,7 +196,6 @@ let id = 0;
 
 function removeClasses(number, prevNumber) {
   clearTimeout(id);
-  console.log("removeClasses kører");
   number.classList.remove("currentCell");
   prevNumber.classList.remove("previousCell");
 }
@@ -238,18 +205,11 @@ function knapSackBacktrack() {
   if (i > 1) {
     const number = document.getElementById(`DP${i}:${c}`);
     const prevNumber = document.getElementById(`DP${i - 1}:${c}`);
-    console.log("This is previous number");
-    console.log(prevNumber);
-    console.log("This is current number");
-    console.log(number);
-
     const leftNumber = document.getElementById(
       `DP${i - 1}:${c - weightArr[i - 2]}`
     );
     number.classList.add("currentCell");
     prevNumber.classList.add("previousCell");
-    //id = setTimeout(removeClasses, 1000, number, prevNumber)
-
     id = setTimeout(() => {
       number.classList.remove("currentCell");
       prevNumber.classList.remove("previousCell");
@@ -270,7 +230,6 @@ function knapSackBacktrack() {
   } else {
     resetApplication();
   }
-  console.log(itemsAdded);
   return DP[N][maxCapacity];
 }
 
@@ -289,7 +248,6 @@ function resetApplication() {
   stopGameInterval();
   resetColAndRowValues();
   resetGridIsFull();
-  // reset Items added - tempoary solution
   itemsAdded = [];
 }
 
@@ -302,23 +260,13 @@ function stopGameInterval() {
 }
 
 function solveKnapsackButton() {
-  console.log("Clicked on Solve");
   startGameInterval();
   displayGrid();
 }
 
-function resetKnapsackButton() {
-  console.log("Clicked on Reset");
-}
-
 function stopKnapsackButton() {
-  console.log("Clicked on Stop");
   stopGameInterval();
   clearTimeout(id);
-}
-
-function continueKnapsackButton() {
-  console.log("Clicked on Continue");
 }
 
 function clearArrays() {
