@@ -1,6 +1,12 @@
 # Data Structures and Algorithms Exam Project
 ## - The 0/1 Knapsack Problem | Dynamic Programming
 
+## Gruppe LYN
+
+* Lukas Maibom
+* Yaw Boateng
+* Nikolaj Chritian Møller
+
 ![Visualization](public/visualization.png)
 
 ## Kort beskrivelse
