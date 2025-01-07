@@ -10,7 +10,8 @@
 body {
     font-family: 'Fira Code', monospace;
     color: black;
-    background-color: #e9cc94;
+    background: rgb(102, 102, 102);
+    background: linear-gradient(0deg, rgba(102, 102, 102, 1) 0%, rgba(233, 204, 148, 1) 27%);
     background-size: cover;
     background-position: center;
 }
@@ -34,7 +35,7 @@ select[type='number'] {
     display: flex;
     font-family: 'Fira Code', monospace;
     background-color: #494343;
-    color: white;
+    color: #fff5ee;
     text-align: right;
     width: 41px;
     font-size: 12px;
@@ -42,7 +43,7 @@ select[type='number'] {
 }
 
 label {
-    color: white;
+    color: #fff5ee;
     font-size: 16px;
     font-weight: 500;
     margin-left: 10px;
@@ -63,7 +64,7 @@ th {
 
 td {
     text-align: center;
-    color: white;
+    color: #fff5ee;
 }
 
 /*#endregion */
@@ -74,14 +75,13 @@ td {
 #navbar-container {
     display: flex;
     justify-content: center;
-    background-color: #d11212;
     background-color: #604531;
     border: solid 1px black;
     font-family: 'Fira Code', monospace;
     font-size: 12px;
     height: 70px;
     padding: 5px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 #nav-selectors {
@@ -199,7 +199,7 @@ td {
     background-color: #604531;
     font-size: 24px;
     font-weight: 600;
-    color: white;
+    color: #fff5ee;
     display: flex;
     justify-content: center;
     align-items: center;
