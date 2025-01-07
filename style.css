@@ -10,7 +10,7 @@
 body {
     font-family: 'Fira Code', monospace;
     color: black;
-    background-color: #666;
+    background-color: #e9cc94;
     background-size: cover;
     background-position: center;
 }
@@ -20,7 +20,7 @@ h1 {
     justify-content: center;
     font-family: 'Fira Code', monospace;
     font-size: 25px;
-    color: #6e6;
+    color: #333333;
     padding-top: 30px;
     padding-bottom: 20px;
 }
@@ -34,7 +34,7 @@ select[type='number'] {
     display: flex;
     font-family: 'Fira Code', monospace;
     background-color: #494343;
-    color: #6e6;
+    color: white;
     text-align: right;
     width: 41px;
     font-size: 12px;
@@ -42,7 +42,7 @@ select[type='number'] {
 }
 
 label {
-    color: #6e6;
+    color: white;
     font-size: 16px;
     font-weight: 500;
     margin-left: 10px;
@@ -63,6 +63,7 @@ th {
 
 td {
     text-align: center;
+    color: white;
 }
 
 /*#endregion */
@@ -74,7 +75,7 @@ td {
     display: flex;
     justify-content: center;
     background-color: #d11212;
-    background-color: #453e35ea;
+    background-color: #604531;
     border: solid 1px black;
     font-family: 'Fira Code', monospace;
     font-size: 12px;
@@ -109,7 +110,6 @@ td {
     align-items: flex-start;
     grid-row: 1/-1;
     grid-column: 2;
-    background-color: #666;
 }
 
 #chest-img {
@@ -124,12 +124,12 @@ td {
     font-family: 'Fira Code', monospace;
     font-size: 20px;
     color: #6e6;
-    background-color: #453e35ea;
+    background-color: #604531;
     border: 1px solid black;
     padding: 5px;
     min-height: 100px;
     max-height: 100%;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
 }
 
 /********************** BUTTONS ***************************/
@@ -138,7 +138,7 @@ td {
     font-family: inherit;
     font-size: 12px;
     color: #6e6;
-    background-color: #5b5b5b;
+    background-color: #228b22;
 }
 
 #stop-button {
@@ -188,17 +188,18 @@ td {
     grid-template-rows: repeat(var(--N), max-content);
     grid-row: 1;
     grid-column: 1;
-    gap: 1px;
+    gap: 2px;
     min-height: 400px;
     justify-content: center;
 }
 
 .cell {
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
     font-family: 'Fira Code', monospace;
-    background-color: #453e35ea;
+    background-color: #604531;
     font-size: 24px;
     font-weight: 600;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -212,11 +213,11 @@ td {
 }
 
 .itemHeader {
-    color: white;
+    color: #201e1e;
 }
 
 .currentCell {
-    color: rgb(73 108 223)
+    color: rgb(73 108 223);
 }
 
 .previousCell {
@@ -227,7 +228,7 @@ td {
     height: 180px;
     width: 180px;
     object-fit: cover;
-    opacity: 0.5;
+    opacity: 0.7;
 }
 
 .treasure-img {
