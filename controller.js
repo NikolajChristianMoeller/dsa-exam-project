@@ -1,5 +1,5 @@
 // alt midt imellem. for at adskille de to. Alt skal gå i gennem conrtolleren.
-import { DP, weightArr, valueArr, itemsAdded, gridIsFull, resetApplication } from "./script.js"
+import { DP, weightArr, valueArr, gridIsFull } from "./script.js"
 import { displayGrid } from "./view.js";
 import { createGrid, generateTreasures } from "./model.js";
 import { setDP } from "./script.js";
@@ -9,6 +9,8 @@ let c = 2;
 let N = 0;
 let id = 0;
 let maxCapacity = 0;
+let gameInterval;
+let itemsAdded = [];
 
 function setN(value) {
     N = value
@@ -94,6 +96,42 @@ function setTreasure(event) {
   generateTreasures();
 }
 
+function startGameInterval() {
+  stopGameInterval();
+  gameInterval = setInterval(() => {
+    if (!DP.getIsGridFull() ) {
+      knapSack();
+    } else {
+      knapSackBacktrack();
+    }
+  }, 500);
+}
+
+function solveKnapsackButton() {
+  startGameInterval();
+  displayGrid();
+}
+
+function stopKnapsackButton() {
+  stopGameInterval();
+  clearTimeout(id);
+}
+
+function stopGameInterval() {
+  clearInterval(gameInterval);
+}
+
+function resetApplication() {
+  stopGameInterval();
+  resetColAndRowValues();
+  resetGridIsFull();
+  itemsAdded = [];
+}
+
+function resetGridIsFull() {
+  DP.isGridFull(false)
+}
+
 function setStartValues() {
   maxCapacity = 1;
   N = 1;
@@ -112,4 +150,6 @@ function resetColAndRowValues() {
   i = 2;
 }
 
-export { knapSack, knapSackBacktrack, setStartValues, setCapacity, maxCapacity, N, i, c, resetColAndRowValues, setN, id, setTreasure }
+export { knapSack, knapSackBacktrack, 
+    setStartValues, setCapacity, maxCapacity, N, i, c, 
+    resetColAndRowValues, setN, id, setTreasure, solveKnapsackButton, stopKnapsackButton, gameInterval }

@@ -3,18 +3,16 @@ window.addEventListener("load", init);
 import { createGrid, treasurePool, generateTreasures } from "./model.js";
 import { displayGrid, colorizeCellHeaders, showArray, setUpEventListeners } from "./view.js";
 import { knapSack, knapSackBacktrack, setStartValues, setCapacity, c, i, 
-  resetColAndRowValues, setN, id } from "./controller.js";
+  resetColAndRowValues, setN, id, gameInterval } from "./controller.js";
 
 
 // ******************************* MODEL *********************************
 //#region Model
-let gameInterval;
 let picArr = [];
 let weightArr = [];
 let valueArr = [];
 let gridIsFull = false;
 let DP;
-let itemsAdded = [];
 
 function setDP(DPValue) {
   DP = DPValue;
@@ -52,42 +50,6 @@ function init() {
 //   prevNumber.classList.remove("previousCell");
 // }
 
-function startGameInterval() {
-  stopGameInterval();
-  gameInterval = setInterval(() => {
-    if (!DP.getIsGridFull() ) {
-      knapSack();
-    } else {
-      knapSackBacktrack();
-    }
-  }, 500);
-}
-
-function resetApplication() {
-  stopGameInterval();
-  resetColAndRowValues();
-  resetGridIsFull();
-  itemsAdded = [];
-}
-
-function resetGridIsFull() {
-  gridIsFull = false;
-}
-
-function stopGameInterval() {
-  clearInterval(gameInterval);
-}
-
-function solveKnapsackButton() {
-  startGameInterval();
-  displayGrid();
-}
-
-function stopKnapsackButton() {
-  stopGameInterval();
-  clearTimeout(id);
-}
-
 function clearArrays() {
   picArr = [];
   valueArr = [];
@@ -99,16 +61,14 @@ function clearTreasureTable() {
   table.innerHTML = "";
 }
 
-export {gameInterval, 
+export { 
   picArr, 
   weightArr, 
   valueArr, 
-  gridIsFull,DP,itemsAdded}
-
-  export {solveKnapsackButton, stopKnapsackButton}
-
+  gridIsFull,DP}
   // export stuff from view.js to model.js
-  export {clearArrays, clearTreasureTable, showArray, displayGrid, setDP, resetApplication}
+  export {clearArrays, clearTreasureTable, showArray, 
+    displayGrid, setDP}
 //#endregion
 
 
