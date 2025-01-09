@@ -1,9 +1,10 @@
 // vores data, allerbagerst. vores grid etc, forretningslogik
 
 import { Grid } from "./grid.js"
-import { N, maxCapacity, picArr, weightArr, valueArr, DP, setDP } from "./script.js"
+import { picArr, weightArr, valueArr, DP, setDP } from "./script.js"
 import { clearArrays, clearTreasureTable } from "./script.js"
 import { showArray, displayGrid } from "./script.js";
+import { N, maxCapacity} from "./controller.js"
 
 const treasurePool = {
   1: { img: "crown", value: 10, weight: 3 },

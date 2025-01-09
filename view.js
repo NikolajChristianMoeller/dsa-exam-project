@@ -1,6 +1,7 @@
 //bruger indput og skærm, bruger input og output
-import { maxCapacity, N, DP, picArr, weightArr, valueArr } from "./script.js"
-import { setCapacity, setTreasure, solveKnapsackButton, stopKnapsackButton} from "./script.js"
+import { DP, picArr, weightArr, valueArr } from "./script.js"
+import { setTreasure, solveKnapsackButton, stopKnapsackButton} from "./script.js"
+import { setStartValues, setCapacity, N, maxCapacity } from "./controller.js";
 
 function setUpEventListeners() {
   document.querySelector("#capacity").addEventListener("change", setCapacity);
@@ -14,8 +15,6 @@ function displayGrid() {
   grid.innerHTML = "";
   grid.style.setProperty("--C", maxCapacity + 2);
   grid.style.setProperty("--N", N + 2);
-  console.log("This is grid")
-  console.log(DP)
   for (let row = 0; row < N + 2; row++) {
     for (let col = 0; col < maxCapacity + 2; col++) {
       const cellValue = DP.get(row, col)

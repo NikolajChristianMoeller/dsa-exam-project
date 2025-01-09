@@ -4,6 +4,7 @@ export class Grid {
     this.cols = cols;
     this.grid = [];
     this.newGrid();
+    this.gridIsFull = false
   }
 
   newGrid() {
@@ -23,6 +24,14 @@ export class Grid {
         }
       }
     }
+  }
+
+  getIsGridFull() {
+    return this.gridIsFull
+  }
+
+  isGridFull(value) {
+    this.gridIsFull = value
   }
 
   get(row, col) {
