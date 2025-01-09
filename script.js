@@ -1,5 +1,8 @@
 window.addEventListener("load", init);
 
+import { displayGrid, colorizeCellHeaders, showArray, setUpEventListeners } from "./view.js";
+import { createGrid, treasurePool, generateTreasures } from "./model.js";
+
 // ******************************* MODEL *********************************
 //#region Model
 let gameInterval;
@@ -14,104 +17,15 @@ let N = 0;
 let DP;
 let itemsAdded = [];
 
-const treasurePool = {
-  1: { img: "crown", value: 10, weight: 3 },
-  2: { img: "dagger", value: 6, weight: 2 },
-  3: { img: "diamond_turkis", value: 15, weight: 2 },
-  4: { img: "golden_totem", value: 12, weight: 4 },
-  5: { img: "golden_cup", value: 8, weight: 1 },
-  6: { img: "golden_scull", value: 10, weight: 3 },
-  7: { img: "golden_wine_glass", value: 9, weight: 1 },
-  8: { img: "money_with_sword", value: 11, weight: 5 },
-  9: { img: "ruby", value: 14, weight: 2 },
-  10: { img: "silver_wine_glass", value: 7, weight: 1 },
-  11: { img: "sword", value: 9, weight: 4 },
-};
-
-function createGrid() {
-  const grid = [];
-  for (let i = 0; i <= N + 1; i++) {
-    const row = [];
-    grid.push(row);
-    for (let j = 0; j <= maxCapacity + 1; j++) {
-      if (i === 0 && j === 0) {
-        row.push(" ");
-      } else if (i === 0 && j > 1) {
-        row.push(j - 1);
-      } else if (j === 0 && i > 1) {
-        row.push(i - 1);
-      } else {
-        row.push(0);
-      }
-    }
-  }
-  return grid;
+function setDP(DPValue) {
+  DP = DPValue;
 }
 
-function generateTreasures() {
-  clearArrays();
-
-  for (let i = 1; i <= N; i++) {
-    const generateTreasure = Math.ceil(Math.random() * 11);
-    picArr.push(treasurePool[generateTreasure].img);
-    valueArr.push(treasurePool[generateTreasure].value);
-    weightArr.push(treasurePool[generateTreasure].weight);
-  }
-  clearTreasureTable();
-  picArr.forEach(showArray);
-  DP = createGrid();
-  displayGrid();
-}
 //#endregion
 
 // ******************************* VIEW **********************************
 //#region View
-function displayGrid() {
-  const grid = document.querySelector(".grid");
-  grid.innerHTML = "";
-  grid.style.setProperty("--C", maxCapacity + 2);
-  grid.style.setProperty("--N", N + 2);
-  for (let row = 0; row < N + 2; row++) {
-    for (let col = 0; col < maxCapacity + 2; col++) {
-      const cellValue = DP[row][col];
-      const cell = /*html*/ `
-            <div id="DP${row}:${col}" class="cell">
-            ${cellValue}
-            </div>`;
-      grid.insertAdjacentHTML("beforeend", cell);
-      colorizeCellHeaders(row, col);
-    }
-  }
-}
 
-function colorizeCellHeaders(row, col) {
-  const cell = document.getElementById(`DP${row}:${col}`);
-  if (row === 0 && col == 0) {
-    cell.classList.remove("cell");
-  } else if (row === 0 && col > 0) {
-    cell.classList.add("capacityHeader");
-  } else if (row > 0 && col === 0) {
-    cell.classList.add("itemHeader");
-  }
-}
-
-function showArray(element, index) {
-  const table = document.querySelector("#treasure-table-content");
-  const imgPath = `./public/treasures/${picArr[index]}.svg`;
-  const html = /*html*/ `
-            <tr> 
-                <td>${index + 1}</td>
-                <td class="treasure-image">
-                    <img src="${imgPath}" alt="${
-    picArr[index]
-  }" class="treasure-img">
-                </td>
-                <td>${weightArr[index]}</td>
-                <td>${valueArr[index]}</td>
-            </tr>
-  `;
-  table.insertAdjacentHTML("beforeend", html);
-}
 //#endregion
 
 // **************************** CONTROLLER *******************************
@@ -122,13 +36,6 @@ function init() {
   DP = createGrid();
   displayGrid();
   clearInterval(gameInterval);
-}
-
-function setUpEventListeners() {
-  document.querySelector("#capacity").addEventListener("change", setCapacity);
-  document.querySelector("#treasures").addEventListener("change", setTreasure);
-  document.querySelector("#solve-button").addEventListener("click", solveKnapsackButton);
-  document.querySelector("#stop-button").addEventListener("click", stopKnapsackButton);
 }
 
 function setStartValues() {
@@ -214,7 +121,7 @@ function knapSackBacktrack() {
       number.classList.remove("currentCell");
       prevNumber.classList.remove("previousCell");
       leftNumber.classList.remove("previousCell");
-    }, 1000);
+    }, 500);
     // Vi tjekker om cellen's værdi adskilder sig fra den ovenstående celles-
     if (DP[i][c] != DP[i - 1][c]) {
       const itemNo = i - 1;
@@ -240,7 +147,7 @@ function startGameInterval() {
     } else {
       knapSackBacktrack();
     }
-  }, 1000);
+  }, 500);
 }
 
 function resetApplication() {
@@ -278,4 +185,20 @@ function clearTreasureTable() {
   const table = document.querySelector("#treasure-table-content");
   table.innerHTML = "";
 }
+
+export {gameInterval, 
+  picArr, 
+  weightArr, 
+  valueArr, 
+  maxCapacity, 
+  i, 
+  c, 
+  gridIsFull,N,DP,itemsAdded}
+
+  export {setCapacity, setTreasure, solveKnapsackButton, stopKnapsackButton}
+
+  // export stuff from view.js to model.js
+  export {clearArrays, clearTreasureTable, showArray, displayGrid, setDP}
 //#endregion
+
+
