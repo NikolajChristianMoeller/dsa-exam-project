@@ -1,5 +1,6 @@
 // vores data, allerbagerst. vores grid etc, forretningslogik
 
+import { Grid } from "./grid.js"
 import { N, maxCapacity, picArr, weightArr, valueArr, DP, setDP } from "./script.js"
 import { clearArrays, clearTreasureTable } from "./script.js"
 import { showArray, displayGrid } from "./script.js";
@@ -19,28 +20,11 @@ const treasurePool = {
 };
 
 function createGrid() {
-  const grid = [];
-  for (let i = 0; i <= N + 1; i++) {
-    const row = [];
-    grid.push(row);
-    for (let j = 0; j <= maxCapacity + 1; j++) {
-      if (i === 0 && j === 0) {
-        row.push(" ");
-      } else if (i === 0 && j > 1) {
-        row.push(j - 1);
-      } else if (j === 0 && i > 1) {
-        row.push(i - 1);
-      } else {
-        row.push(0);
-      }
-    }
-  }
-  return grid;
+  return new Grid(N, maxCapacity);
 }
 
 function generateTreasures() {
   clearArrays();
-
   for (let i = 1; i <= N; i++) {
     const generateTreasure = Math.ceil(Math.random() * 11);
     picArr.push(treasurePool[generateTreasure].img);

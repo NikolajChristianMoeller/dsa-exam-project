@@ -17,8 +17,18 @@ let N = 0;
 let DP;
 let itemsAdded = [];
 
+
 function setDP(DPValue) {
   DP = DPValue;
+}
+
+function setCell(row, col, value) {
+  DP[row][col] = value;
+}
+
+function getCell(row, col) {
+  const value = DP[row][col];
+  return value;
 }
 
 //#endregion

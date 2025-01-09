@@ -2,7 +2,27 @@ export class Grid {
   constructor(rows, cols) {
     this.rows = rows;
     this.cols = cols;
-    this.grid = Array.from({ length: rows }, () => Array(cols).fill(null));
+    this.grid = [];
+    this.newGrid();
+  }
+
+  newGrid() {
+    this.grid = []
+    for (let row = 0; row <= this.rows; row++) {
+      const newRow = [];
+      this.grid.push(newRow)
+      for (let col = 0; col <= this.cols; col++) {
+        if (row === 0 && col === 0) {
+          newRow.push(0);
+        } else if (row === 0 && col > 1) {
+          newRow.push(col - 1);
+        } else if (col === 0 && row > 1) {
+          newRow.push(row - 1);
+        } else {
+          newRow.push(0);
+        }
+      }
+    }
   }
 
   get(row, col) {
