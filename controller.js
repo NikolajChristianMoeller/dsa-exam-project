@@ -1,7 +1,7 @@
 // alt midt imellem. for at adskille de to. Alt skal gå i gennem conrtolleren.
 import { DP, weightArr, valueArr, itemsAdded, gridIsFull, resetApplication } from "./script.js"
 import { displayGrid } from "./view.js";
-import { createGrid } from "./model.js";
+import { createGrid, generateTreasures } from "./model.js";
 import { setDP } from "./script.js";
 
 let i = 2;
@@ -87,10 +87,11 @@ function knapSackBacktrack() {
   return DP.get(N, maxCapacity);
 }
 
-function removeClasses(number, prevNumber) {
-  clearTimeout(id);
-  number.classList.remove("currentCell");
-  prevNumber.classList.remove("previousCell");
+function setTreasure(event) {
+  resetApplication();
+  let newN = Number(event.target.value);
+  setN(newN);
+  generateTreasures();
 }
 
 function setStartValues() {
@@ -111,4 +112,4 @@ function resetColAndRowValues() {
   i = 2;
 }
 
-export { knapSack, knapSackBacktrack, setStartValues, setCapacity, maxCapacity, N, i, c, resetColAndRowValues, setN, id }
+export { knapSack, knapSackBacktrack, setStartValues, setCapacity, maxCapacity, N, i, c, resetColAndRowValues, setN, id, setTreasure }

@@ -46,13 +46,6 @@ function init() {
   clearInterval(gameInterval);
 }
 
-function setTreasure(event) {
-  resetApplication();
-  let newN = Number(event.target.value);
-  setN(newN)
-  generateTreasures();
-}
-
 // function removeClasses(number, prevNumber) {
 //   clearTimeout(id);
 //   number.classList.remove("currentCell");
@@ -63,10 +56,8 @@ function startGameInterval() {
   stopGameInterval();
   gameInterval = setInterval(() => {
     if (!DP.getIsGridFull() ) {
-      console.log("inside if - calling knapsack forward :D")
       knapSack();
     } else {
-      console.log("inside else - calling backtrack :(")
       knapSackBacktrack();
     }
   }, 500);
@@ -114,7 +105,7 @@ export {gameInterval,
   valueArr, 
   gridIsFull,DP,itemsAdded}
 
-  export {setTreasure, solveKnapsackButton, stopKnapsackButton}
+  export {solveKnapsackButton, stopKnapsackButton}
 
   // export stuff from view.js to model.js
   export {clearArrays, clearTreasureTable, showArray, displayGrid, setDP, resetApplication}
