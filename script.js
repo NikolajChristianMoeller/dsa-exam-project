@@ -17,7 +17,6 @@ let N = 0;
 let DP;
 let itemsAdded = [];
 
-
 function setDP(DPValue) {
   DP = DPValue;
 }
@@ -87,13 +86,15 @@ function knapSack() {
 
     if (c <= maxCapacity + 1) {
       /* STEP 1 ---------------------------------------------------------- */
-      DP[i][c] = DP[i - 1][c];
-
+      //DP[i][c] = DP[i - 1][c];
+      const preVal = DP.get(i - 1, c)
+      DP.set(i, c, preVal)
       // Vi sætter capacity til at være c-1 for at tage højde for 'col' 0 som er reserveret til item værdierne.
       const capacity = c - 1;
       /* STEP  2 ---------------------------------------------------------- */
-      if (capacity >= w && DP[i - 1][c - w] + v > DP[i][c]) {
-        DP[i][c] = DP[i - 1][c - w] + v;
+      if (capacity >= w && DP.get(i - 1, c - w) + v > DP.get(i, c)) {
+        let updatedCell = DP.get(i - 1, c - w) + v;
+        DP.set(i, c, updatedCell)
         //   "Set værdien til itemets værdi - plus det det der ellers er plads til");
       }
       c++;
@@ -133,7 +134,7 @@ function knapSackBacktrack() {
       leftNumber.classList.remove("previousCell");
     }, 500);
     // Vi tjekker om cellen's værdi adskilder sig fra den ovenstående celles-
-    if (DP[i][c] != DP[i - 1][c]) {
+    if (DP.get(i, c) != DP.get(i - 1, c)) {
       const itemNo = i - 1;
       leftNumber.classList.add("previousCell");
       itemsAdded.push(itemNo);
@@ -146,7 +147,7 @@ function knapSackBacktrack() {
   } else {
     resetApplication();
   }
-  return DP[N][maxCapacity];
+  return DP.get(N, maxCapacity);
 }
 
 function startGameInterval() {

@@ -8,12 +8,12 @@ export class Grid {
 
   newGrid() {
     this.grid = []
-    for (let row = 0; row <= this.rows; row++) {
+    for (let row = 0; row <= this.rows + 1; row++) {
       const newRow = [];
       this.grid.push(newRow)
-      for (let col = 0; col <= this.cols; col++) {
+      for (let col = 0; col <= this.cols + 1; col++) {
         if (row === 0 && col === 0) {
-          newRow.push(0);
+          newRow.push(" ");
         } else if (row === 0 && col > 1) {
           newRow.push(col - 1);
         } else if (col === 0 && row > 1) {

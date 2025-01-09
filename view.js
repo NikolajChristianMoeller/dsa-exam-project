@@ -14,9 +14,11 @@ function displayGrid() {
   grid.innerHTML = "";
   grid.style.setProperty("--C", maxCapacity + 2);
   grid.style.setProperty("--N", N + 2);
+  console.log("This is grid")
+  console.log(DP)
   for (let row = 0; row < N + 2; row++) {
     for (let col = 0; col < maxCapacity + 2; col++) {
-      const cellValue = DP[row][col];
+      const cellValue = DP.get(row, col)
       const cell = /*html*/ `
             <div id="DP${row}:${col}" class="cell">
             ${cellValue}
