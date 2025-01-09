@@ -1,7 +1,7 @@
 // alt midt imellem. for at adskille de to. Alt skal gå i gennem conrtolleren.
-import { DP, weightArr, valueArr, gridIsFull } from "./script.js"
+import { DP, gridIsFull } from "./script.js"
 import { displayGrid } from "./view.js";
-import { createGrid, generateTreasures } from "./model.js";
+import { createGrid, generateTreasures, picArr, weightArr, valueArr } from "./model.js";
 import { setDP } from "./script.js";
 
 let i = 2;

@@ -1,6 +1,7 @@
 //bruger indput og skærm, bruger input og output
-import { DP, picArr, weightArr, valueArr } from "./script.js"
-import { setStartValues, setCapacity, N, maxCapacity, setTreasure, solveKnapsackButton, stopKnapsackButton } from "./controller.js";
+import { DP } from "./script.js"
+import { setStartValues, setCapacity, N, maxCapacity, setTreasure, solveKnapsackButton, stopKnapsackButton} from "./controller.js";
+import {picArr, weightArr, valueArr } from "./model.js"
 
 function setUpEventListeners() {
   document.querySelector("#capacity").addEventListener("change", setCapacity);

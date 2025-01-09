@@ -1,10 +1,14 @@
 // vores data, allerbagerst. vores grid etc, forretningslogik
 
 import { Grid } from "./grid.js"
-import { picArr, weightArr, valueArr, DP, setDP } from "./script.js"
-import { clearArrays, clearTreasureTable } from "./script.js"
+import { DP, setDP } from "./script.js"
+import { clearTreasureTable } from "./script.js"
 import { showArray, displayGrid } from "./script.js";
 import { N, maxCapacity} from "./controller.js"
+
+let picArr = [];
+let weightArr = [];
+let valueArr = [];
 
 const treasurePool = {
   1: { img: "crown", value: 10, weight: 3 },
@@ -24,6 +28,12 @@ function createGrid() {
   return new Grid(N, maxCapacity);
 }
 
+function clearArrays() {
+  picArr = [];
+  valueArr = [];
+  weightArr = [];
+}
+
 function generateTreasures() {
   clearArrays();
   for (let i = 1; i <= N; i++) {
@@ -39,4 +49,4 @@ function generateTreasures() {
   displayGrid();
 }
 
-export {treasurePool, createGrid, generateTreasures}
+export {treasurePool, createGrid, generateTreasures, picArr, weightArr, valueArr}

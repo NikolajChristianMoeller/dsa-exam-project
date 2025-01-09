@@ -8,9 +8,6 @@ import { knapSack, knapSackBacktrack, setStartValues, setCapacity, c, i,
 
 // ******************************* MODEL *********************************
 //#region Model
-let picArr = [];
-let weightArr = [];
-let valueArr = [];
 let gridIsFull = false;
 let DP;
 
@@ -50,24 +47,14 @@ function init() {
 //   prevNumber.classList.remove("previousCell");
 // }
 
-function clearArrays() {
-  picArr = [];
-  valueArr = [];
-  weightArr = [];
-}
-
 function clearTreasureTable() {
   const table = document.querySelector("#treasure-table-content");
   table.innerHTML = "";
 }
 
-export { 
-  picArr, 
-  weightArr, 
-  valueArr, 
-  gridIsFull,DP}
+export { gridIsFull, DP}
   // export stuff from view.js to model.js
-  export {clearArrays, clearTreasureTable, showArray, 
+export {clearTreasureTable, showArray, 
     displayGrid, setDP}
 //#endregion
 
