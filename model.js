@@ -1,13 +1,12 @@
 // vores data, allerbagerst. vores grid etc, forretningslogik
-
 import { Grid } from "./grid.js"
-import { DP, setDP } from "./script.js"
 import { showArray, displayGrid } from "./script.js";
 import { N, maxCapacity} from "./controller.js"
 
 let picArr = [];
 let weightArr = [];
 let valueArr = [];
+let DP;
 
 const treasurePool = {
   1: { img: "crown", value: 10, weight: 3 },
@@ -22,6 +21,10 @@ const treasurePool = {
   10: { img: "silver_wine_glass", value: 7, weight: 1 },
   11: { img: "sword", value: 9, weight: 4 },
 };
+
+function setDP(DPValue) {
+  DP = DPValue;
+}
 
 function createGrid() {
   return new Grid(N, maxCapacity);
@@ -53,4 +56,4 @@ function clearTreasureTable() {
   table.innerHTML = "";
 }
 
-export {treasurePool, createGrid, generateTreasures, picArr, weightArr, valueArr}
+export {treasurePool, createGrid, generateTreasures, picArr, weightArr, valueArr, DP, setDP}

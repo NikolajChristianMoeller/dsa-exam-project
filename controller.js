@@ -1,8 +1,6 @@
 // alt midt imellem. for at adskille de to. Alt skal gå i gennem conrtolleren.
-import { DP, gridIsFull } from "./script.js"
 import { displayGrid } from "./view.js";
-import { createGrid, generateTreasures, picArr, weightArr, valueArr } from "./model.js";
-import { setDP } from "./script.js";
+import { createGrid, generateTreasures, picArr, weightArr, valueArr, DP, setDP } from "./model.js";
 
 let i = 2;
 let c = 2;
@@ -70,7 +68,12 @@ function knapSackBacktrack() {
     id = setTimeout(() => {
       number.classList.remove("currentCell");
       prevNumber.classList.remove("previousCell");
+      console.log("leftNumber")
+      console.log(leftNumber)
+      console.log("prevnumber")
+      console.log(prevNumber)
       leftNumber.classList.remove("previousCell");
+      
     }, 500);
     // Vi tjekker om cellens værdi adskilder sig fra den ovenstående celles-
     if (DP.get(i, c) != DP.get(i - 1, c)) {
