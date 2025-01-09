@@ -1,5 +1,5 @@
 //bruger indput og skærm, bruger input og output
-import { setStartValues, setCapacity, N, maxCapacity, setTreasure, solveKnapsackButton, stopKnapsackButton} from "./controller.js";
+import { setCapacity, N, maxCapacity, setTreasure, solveKnapsackButton, stopKnapsackButton} from "./controller.js";
 import { picArr, weightArr, valueArr, DP } from "./model.js"
 
 function setUpEventListeners() {
