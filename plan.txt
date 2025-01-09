@@ -1,0 +1,19 @@
+Dagsorden:
+
+1. Vi skal lave en plan
+2. Implementere så man kan se, hvilke items der blev valgt i kisten (Yaw)
+3. Implementere farver på tallene i griddet når vi trykker "Start"
+4. Opdel koden i MVC som noget af det første - så vi vænner os til adskillelsen allerede nu
+5. Alle skal forstå koden
+6. Rapport
+    a. Er der ting som vi skal forberede os på, at de kan spørge ind til, som vi har skrevet i rapporten?
+    b. Eksempelvis Fractional Knapsack
+7. Dissecte eksamen
+    a. Demonstration (3-4 min)
+    b. Big O - Hav ét eksempel på hver
+    c. Sorteringsalgoritmer - Hav styr på andre (ulemper / fordele)
+    d. Greedy vs. brute force
+    e. Pseudokoden vs. implementationen
+        i. Forklar pseudokoden
+        ii. Forklar implementationen
+    f. Spørgsmål til pensum (få)

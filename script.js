@@ -50,9 +50,8 @@ function createGrid() {
 
 function generateTreasures() {
   clearArrays();
-
   for (let i = 1; i <= N; i++) {
-    const generateTreasure = Math.ceil(Math.random() * 11);
+    const generateTreasure = Math.ceil(Math.random() * 11); // Runder op
     picArr.push(treasurePool[generateTreasure].img);
     valueArr.push(treasurePool[generateTreasure].value);
     weightArr.push(treasurePool[generateTreasure].weight);
@@ -201,7 +200,7 @@ function removeClasses(number, prevNumber) {
 }
 
 function knapSackBacktrack() {
-  // Vi køre algoritmen så længe 'rows' er højere end 1 - da row 1 er reserveret til item '0'.
+  // Vi kører algoritmen så længe 'rows' er højere end 1 - da row 1 er reserveret til item '0'.
   if (i > 1) {
     const number = document.getElementById(`DP${i}:${c}`);
     const prevNumber = document.getElementById(`DP${i - 1}:${c}`);
@@ -215,16 +214,17 @@ function knapSackBacktrack() {
       prevNumber.classList.remove("previousCell");
       leftNumber.classList.remove("previousCell");
     }, 1000);
-    // Vi tjekker om cellen's værdi adskilder sig fra den ovenstående celles-
+    // Vi tjekker om cellens værdi adskiller sig fra den ovenstående celles
     if (DP[i][c] != DP[i - 1][c]) {
       const itemNo = i - 1;
       leftNumber.classList.add("previousCell");
       itemsAdded.push(itemNo);
-      // Juster capacity så det tager højde for at itemet ikke længere er i vores kanpsck
-      // Vi sætter 'c' til at være 'c' minus itemets vægt. Den finder vi på index plads [i -2] da vores grid har 2 'cols' mere end vores array har pladser.
+      // Juster capacity så det tager højde for at itemet ikke længere er i vores knapsack
+      // Vi sætter 'c' til at være 'c' minus itemets vægt.
+      // Den finder vi på index plads [i - 2] da vores grid har 2 'cols' mere end vores array har pladser.
       c = c - weightArr[i - 2];
     }
-    // Vi rykker viddere til den ovenstående row.
+    // Vi rykker videre til den ovenstående row.
     i--;
   } else {
     resetApplication();
