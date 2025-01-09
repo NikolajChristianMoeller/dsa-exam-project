@@ -2,7 +2,6 @@
 
 import { Grid } from "./grid.js"
 import { DP, setDP } from "./script.js"
-import { clearTreasureTable } from "./script.js"
 import { showArray, displayGrid } from "./script.js";
 import { N, maxCapacity} from "./controller.js"
 
@@ -47,6 +46,11 @@ function generateTreasures() {
   let DPValue = createGrid();
   setDP(DPValue)
   displayGrid();
+}
+
+function clearTreasureTable() {
+  const table = document.querySelector("#treasure-table-content");
+  table.innerHTML = "";
 }
 
 export {treasurePool, createGrid, generateTreasures, picArr, weightArr, valueArr}

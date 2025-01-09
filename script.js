@@ -47,15 +47,10 @@ function init() {
 //   prevNumber.classList.remove("previousCell");
 // }
 
-function clearTreasureTable() {
-  const table = document.querySelector("#treasure-table-content");
-  table.innerHTML = "";
-}
 
 export { gridIsFull, DP}
   // export stuff from view.js to model.js
-export {clearTreasureTable, showArray, 
-    displayGrid, setDP}
+export {showArray, displayGrid, setDP}
 //#endregion
 
 
