@@ -1,4 +1,3 @@
-// alt midt imellem. for at adskille de to. Alt skal gå i gennem conrtolleren.
 import { displayGrid } from "./view.js";
 import {
   createGrid,

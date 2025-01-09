@@ -1,4 +1,3 @@
-// vores data, allerbagerst. vores grid etc, forretningslogik
 import { Grid } from "./grid.js"
 import { showArray, displayGrid } from "./script.js";
 import { N, maxCapacity} from "./controller.js"
