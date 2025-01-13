@@ -37,6 +37,19 @@ function colorizeCellHeaders(row, col) {
   }
 }
 
+function showItemStatus(isSelected, i) {
+  const itemHeadder = document.getElementById(`DP${i}:0`);
+  itemHeadder.classList.remove("itemHeader");
+  console.log(itemHeadder);
+  console.log(isSelected);
+  if (isSelected == true) {
+    itemHeadder.classList.add("iteamAdded");
+  } else {
+    itemHeadder.classList.add("itemDiscarded");
+  }
+}
+
+
 function showArray(element, index) {
    const table = document.querySelector("#treasure-table-content");
    const imgPath = `./public/treasures/${picArr[index]}.svg`;
@@ -55,4 +68,4 @@ function showArray(element, index) {
    table.insertAdjacentHTML("beforeend", html);
  }
 
-export { displayGrid, colorizeCellHeaders, showArray, setUpEventListeners }
+export { displayGrid, colorizeCellHeaders, showArray, setUpEventListeners, showItemStatus }
