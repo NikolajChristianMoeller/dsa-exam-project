@@ -49,8 +49,20 @@ function colorizeCellHeaders(row, col) {
     cell.classList.add("itemHeader");
   }
 }
-// Hvorfor var det nu at vi SKULLE have element med,
-// og hvorfor får den index som parameter? Spørg Yaw
+
+function showItemStatus(isSelected, i) {
+  const itemHeadder = document.getElementById(`DP${i}:0`);
+  itemHeadder.classList.remove("itemHeader");
+  console.log(itemHeadder);
+  console.log(isSelected);
+  if (isSelected == true) {
+    itemHeadder.classList.add("iteamAdded");
+  } else {
+    itemHeadder.classList.add("itemDiscarded");
+  }
+}
+
+
 function showArray(element, index) {
   // Table skal bruges klassen "treasure-table-content" da vi skal bruge dens ID
   const table = document.querySelector("#treasure-table-content");
@@ -76,4 +88,4 @@ function showArray(element, index) {
   table.insertAdjacentHTML("beforeend", html);
 }
 
-export { displayGrid, colorizeCellHeaders, showArray, setUpEventListeners };
+export { displayGrid, colorizeCellHeaders, showArray, setUpEventListeners, showItemStatus }

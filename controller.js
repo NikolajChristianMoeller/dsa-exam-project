@@ -1,3 +1,4 @@
+import { displayGrid, showItemStatus } from "./view.js";
 import {
   createGrid,
   generateTreasures,
@@ -34,22 +35,16 @@ function knapSack() {
     throw new Error("Invalid input: Check that weights and values");
   }
   if (i <= N + 1) {
-    // Vi kigger på i - 2 for at kompencere for de rows og cols der er til item - eller capacity nr. eller 0'værdier.
-    // Vi gemmer vægt og værdi af nuværende item i w og v
     let w = weightArr[i - 2];
     let v = valueArr[i - 2];
     // Vi vil gerne tilføje en row hvor der kun er 0 i. Derved kan vi sammenligne senere når vi skal forwardtracke
     if (c <= maxCapacity + 1) {
-      // Den ovenstående celles værdi smider vi i nuværende celle
       const preVal = DP.get(i - 1, c);
       // Vi sætter bare den tidligere celles værdi på nuværende celle
       DP.set(i, c, preVal);
       const capacity = c - 1;
-      // Det nuværende items vægt skal passe til den capacity vi har sat (der skal være plads i den)
-      // Overvej at inkluder nuværende item for at se om det vil være mere profitabelt
-      if (capacity >= w && v + DP.get(i - 1, c - w) > DP.get(i, c)) {
-         let updatedCell = v + DP.get(i - 1, c - w);
-        // Set værdien til itemets værdi - plus det der ellers er plads til
+      if (capacity >= w && DP.get(i - 1, c - w) + v > DP.get(i, c)) {
+        let updatedCell = DP.get(i - 1, c - w) + v;
         DP.set(i, c, updatedCell);
       }
       c++;
@@ -70,22 +65,13 @@ function knapSack() {
 }
 
 function knapSackBacktrack() {
-  // Fordi nuværende rows skal sammenlignes med nuværende row - 1,
-  // må i ikke være mindre end 2 da vi ellers ville sammenligne med capacity headeren aka. (row[0])
   if (i > 1) {
     setClassColours();
-    // Vi tjekker om cellens værdi adskiller sig fra den ovenstående celles
-    // aka. hvis nuværende celles værdi ikke er den samme ovenstående, så er det nuværende item tilføjet
-    if (DP.get(i, c) > DP.get(i - 1, c)) {
-      // Vi backtracker tilbage i griddet med i - 1, og vi sørger for...
-      // at vi ikke får fat i capacityheaderen når vi backtracker
-      const itemNo = i - 1;
-      itemsAdded.push(itemNo);
-      // Når vi tilføjer et item skal vi trække dens vægt fra knapsacks capacity (c)
-      // Vi minusser med 2 fordi vi har allerede tilføjet en ekstra kolonne OG arrayet er 0 indexeret
-      c = c - weightArr[i - 2];
+    if (DP.get(i, c) != DP.get(i - 1, c)) {
+      showItemStatus(true, i);
+    } else {
+      showItemStatus(false, i);
     }
-    // Vi rykker viddere til den ovenstående row.
     i--;
   } else {
     resetApplication();
@@ -93,6 +79,7 @@ function knapSackBacktrack() {
   // Vi lander på det sidste items værdi
   return DP.get(N, maxCapacity);
 }
+
 
 function setClassColours() {
   // Gemmer ID'et i to variabler da vi skal bruge variablerne til at sætte deres farver
