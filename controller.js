@@ -7,7 +7,6 @@ import {
   DP,
   setDP,
 } from "./model.js";
-import { displayGrid } from "./view.js";
 
 let i = 2;
 let c = 2;
@@ -49,7 +48,7 @@ function knapSack() {
         DP.set(i, c, updatedCell);
       }
       c++;
-      // Else if c er større end maxCapacity + 1 ved vi nu at vi er gået gennem alle capa
+      // Ellers hvis c er større end maxCapacity + 1 ved vi nu at vi er gået gennem alle capacities
     } else if (c > maxCapacity + 1) {
       i++;
       c = 2;
