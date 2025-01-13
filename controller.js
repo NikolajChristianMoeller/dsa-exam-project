@@ -35,6 +35,7 @@ function knapSack() {
     throw new Error("Invalid input: Check that weights and values");
   }
   if (i <= N + 1) {
+    // Vi kigger på i - 2 for at kompencere for de rows og cols der er til item - eller capacity nr. eller 0'værdier.
     let w = weightArr[i - 2];
     let v = valueArr[i - 2];
     // Vi vil gerne tilføje en row hvor der kun er 0 i. Derved kan vi sammenligne senere når vi skal forwardtracke
