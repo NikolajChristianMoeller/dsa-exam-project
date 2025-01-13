@@ -43,7 +43,7 @@ function showItemStatus(isSelected, i) {
   console.log(itemHeadder);
   console.log(isSelected);
   if (isSelected == true) {
-    itemHeadder.classList.add("iteamAdded");
+    itemHeadder.classList.add("itemAdded");
   } else {
     itemHeadder.classList.add("itemDiscarded");
   }

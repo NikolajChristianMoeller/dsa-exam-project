@@ -15,6 +15,7 @@ let id = 0;
 let maxCapacity = 0;
 let gameInterval;
 let itemsAdded = [];
+let timerValue = 1000;
 
 function setN(value) {
   N = value;
@@ -58,6 +59,7 @@ function knapSackBacktrack() {
   if (i > 1) {
     setClassColours();
     if (DP.get(i, c) != DP.get(i - 1, c)) {
+      c = c - weightArr[i - 2];
       showItemStatus(true, i);
     } else {
       showItemStatus(false, i);
@@ -68,7 +70,6 @@ function knapSackBacktrack() {
   }
   return DP.get(N, maxCapacity);
 }
-
 
 function setClassColours() {
   const number = document.getElementById(`DP${i}:${c}`);
@@ -86,7 +87,7 @@ function setClassColours() {
     if (leftNumber !== 0) {
       leftNumber.classList.remove("previousCell");
     }
-  }, 500);
+  }, timerValue);
 }
 
 function setTreasure(event) {
@@ -104,7 +105,7 @@ function startGameInterval() {
     } else {
       knapSackBacktrack();
     }
-  }, 500);
+  }, timerValue);
 }
 
 function solveKnapsackButton() {
