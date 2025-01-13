@@ -8,6 +8,8 @@ function init() {
   setUpEventListeners();
   setStartValues();
   const DPValue = createGrid();
+  // Vi er nødsaget til at kalde setDP som sætter værdien af DPValue (ligesom i Java)
+  // Da det var den "eneste" mulighed for os at få værdien af DP (da den bliver immutable)
   setDP(DPValue)
   displayGrid();
   clearInterval(gameInterval);

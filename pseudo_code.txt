@@ -27,7 +27,6 @@ for (hver objekt fra 1 til N) {
 
 3. (BACKTRACKING FOR AT FINDE VALGTE OBJEKTER)
  itemsAddedArr = []
-
 	iterer fra sidste objekt til første objekt {
 		if(nuværende objekts værdi ikke er ligmed forrige objekts værdi)  {
 		gem/tilføj objektet(i) i itemsAdded tasken
