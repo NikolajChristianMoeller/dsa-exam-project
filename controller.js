@@ -14,8 +14,8 @@ let N = 0;
 let id = 0;
 let maxCapacity = 0;
 let gameInterval;
-let itemsAdded = [];
-let timerValue = 1000;
+//let itemsAdded = [];
+let timerValue = 500;
 
 function setN(value) {
   N = value;
@@ -37,7 +37,8 @@ function knapSack() {
     if (c <= maxCapacity + 1) {
       const preVal = DP.get(i - 1, c);
       DP.set(i, c, preVal);
-      const capacity = c - 1;
+      const capacity = c - 1; // beregner den faktisk af knapsack på det nuværende tidspunkt
+      // c - w repræsenterer den resterende kapacitet i DP-tabellen hvis vi vælger det aktuelle item
       if (capacity >= w && DP.get(i - 1, c - w) + v > DP.get(i, c)) {
         let updatedCell = DP.get(i - 1, c - w) + v;
         DP.set(i, c, updatedCell);

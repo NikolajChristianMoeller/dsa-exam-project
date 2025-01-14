@@ -36,7 +36,7 @@ function colorizeCellHeaders(row, col) {
     cell.classList.add("itemHeader");
   }
 }
-
+  
 function showItemStatus(isSelected, i) {
   const itemHeadder = document.getElementById(`DP${i}:0`);
   itemHeadder.classList.remove("itemHeader");
