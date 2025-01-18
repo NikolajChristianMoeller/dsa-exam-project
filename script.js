@@ -127,8 +127,12 @@ function init() {
 function setUpEventListeners() {
   document.querySelector("#capacity").addEventListener("change", setCapacity);
   document.querySelector("#treasures").addEventListener("change", setTreasure);
-  document.querySelector("#solve-button").addEventListener("click", solveKnapsackButton);
-  document.querySelector("#stop-button").addEventListener("click", stopKnapsackButton);
+  document
+    .querySelector("#solve-button")
+    .addEventListener("click", solveKnapsackButton);
+  document
+    .querySelector("#stop-button")
+    .addEventListener("click", stopKnapsackButton);
 }
 
 function setStartValues() {
